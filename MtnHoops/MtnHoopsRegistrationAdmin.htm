@@ -1,0 +1,698 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; chrome=1;">
+    <meta name="fragment" content="!">
+    <base target="_blank">
+    <title>Mountain Hoops Camp Entry Form</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#entryForm").validate();
+        });
+
+        function setphone(fieldset) {
+            var setField = false;
+            for (i = 1; i < 4; i++) {
+                fieldobj = $('#' + fieldset + i);
+                if ($(fieldobj).val() == '' || $(fieldobj).val().length != $(fieldobj).attr('maxLength')) { setField = false; $('#' + fieldset).val(''); i = 4; } else { setField = true; }
+            }
+            if (setField) { $('#' + fieldset).val($('#' + fieldset + '1').val() + $('#' + fieldset + '2').val() + $('#' + fieldset + '3').val()) }
+        }
+        function autotab(origField, destField) {
+            if (origField.getAttribute && origField.value.length == origField.getAttribute("maxlength")) { destField.focus(); }
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function toProperCase(str) { return str.replace(/\b([a-z])/g, function (_, initial) { return initial.toUpperCase(); }); }
+
+        function checkemail(obj) {
+            if (obj.value == 'Yes') {
+                $('#' + obj.name + '_div').show();
+                $('#' + obj.name + '_1').val('');
+                $('#' + obj.name + '_2').val('');
+            }
+            else {
+                $('#' + obj.name + '_div').hide();
+                $('#' + obj.name + '_1').val('sorry@noemail.com');
+                $('#' + obj.name + '_2').val('sorry@noemail.com');
+            }
+        }
+        function updateLocation(obj) {
+            if (obj.value != '') {
+                $('#locationDiv').show();
+                if (obj.value == "1" || obj.value == "2") {
+                    $('.locationClinic').show();
+                    $('.locationNotClinic1').hide();
+                    $('.locationNotClinic2').hide();
+					$('#locationClinic').val('');
+					$('#locationNotClinic1').val('');
+                    $('#locationNotClinic2').val('');
+                } else if (obj.value == "3" || obj.value == "4") {
+                    $('.locationClinic').hide();
+                    $('.locationNotClinic1').show();
+                    $('.locationNotClinic2').hide();
+					$('#locationClinic').val('');
+					$('#locationNotClinic1').val('');
+                    $('#locationNotClinic2').val('');
+                }
+                else {
+                    $('.locationClinic').hide();
+                    $('.locationNotClinic1').hide();
+					$('.locationNotClinic2').show();
+					$('#locationClinic').val('');
+					$('#locationNotClinic1').val('');
+                    $('#locationNotClinic2').val('');
+				}
+            }
+            else {
+                $('#locationDiv').hide();
+                $('#locationClinic').val('');
+                $('#locationNotClinic1').val('');
+				$('#locationNotClinic2').val('');
+            }
+        }
+        function postToGoogle() {
+            try {
+
+                //window.scrollTo(0, 0);
+				
+                if ($('#entryForm').valid()) {
+					$('#fname').focus();
+                    //if (1 == 1) {
+                    //Set fields on entryForm
+					                    
+                    //Liability:
+                    $('#entry_1420925338').val($('#liability').val());
+                    //Payment
+                    $('#entry_836064026').val($('#payment').val());
+ 
+                    //First Name
+                    $('#entry_468125125').val($('#fname').val());
+                    //Last Name
+                    $('#entry_475256130').val($('#lname').val());
+                    //confirmation name
+                    $('#registeredName').html($('#fname').val() + ' ' + $('#lname').val())
+                    //Grade
+                    $('#entry_1791211207').val($('#grade').val());
+                    //Gender
+                    $('#entry_1949776303').val($('#gender').val());
+                    //Shirt Size
+                    $('#entry_724904151').val($('#shirtSize').val());
+                    //Skill Level
+                    $('#entry_63752483').val($('#skillLevel').val());
+                    //Medical
+                    $('#entry_1654300607').val($('#medical').val());
+                    //Location
+                    if ($('#grade').val() == '1' || $('#grade').val() == '2') {
+                        $('#entry_1938819117').val($('#locationClinic').val());
+                        $('#registeredLocation').html($('#locationClinic').val());
+                    }
+					else if ($('#grade').val() == '3' || $('#grade').val() == '4') {
+						$('#entry_1938819117').val($('#locationNotClinic1').val());
+                        $('#registeredLocation').html($('#locationNotClinic1').val());
+					}
+                    else {
+                        $('#entry_1938819117').val($('#locationNotClinic2').val());
+                        $('#registeredLocation').html($('#locationNotClinic2').val());
+                    }
+
+                    if ($('#grade').val() == '1' & $('#locationClinic').val()=='EPICENTER') {
+                        $('#registeredTime').html('9am - 10:45am')
+                        $('#entry_1481928124').val('1');
+                    }
+                    else if ($('#grade').val() == '2' & $('#locationClinic').val()=='EPICENTER') {
+                        $('#registeredTime').html('11am - 12:45pm')
+                        $('#entry_1481928124').val('2');
+                    }
+                    else if ($('#grade').val() == '1' || $('#grade').val() == '1' || $('#grade').val() == '3' || $('#grade').val() == '4') {
+                        $('#registeredTime').html('9am - 11am')
+                        $('#entry_1481928124').val('1');
+                    } else {
+                        $('#registeredTime').html('11am - 1pm')
+                        $('#entry_1481928124').val('2');
+                    }
+
+                    //Parent First Name
+                    $('#entry_1906782859').val($('#parentFName').val());
+                    //Parent Last Name
+                    $('#entry_474647137').val($('#parentLName').val());
+                    //Child Lives With
+                    $('#entry_903779928').val($('#childLivesWith').val());
+                    //Address
+                    $('#entry_1402976333').val($('#address').val());
+                    //City
+                    $('#entry_1315311435').val($('#city').val());
+                    //State
+                    $('#entry_215338488').val($('#state').val());
+                    //Zip
+                    $('#entry_1317122726').val($('#zip').val());
+                    //Home Phone
+                    $('#entry_1526387338').val($('#homephone1').val() + '-' + $('#homephone2').val() + '-' + $('#homephone3').val());
+                    //Cell Phone
+                    $('#entry_512266806').val($('#cellphone1').val() + '-' + $('#cellphone2').val() + '-' + $('#cellphone3').val());
+                    //Email
+                    $('#entry_2062229120').val($('#email_1').val());
+                    //Emergencey Contact
+                    $('#entry_2048136904').val($('#emergencyContact').val());
+                    //Emergency Phone
+                    if ($('#emergencyPhone').val() != '') {
+                        $('#entry_1254374332').val($('#emergencyPhone1').val() + '-' + $('#emergencyPhone2').val() + '-' + $('#emergencyPhone3').val());
+                    }
+                    //Emergencey Relationship to Child
+                    $('#entry_580467603').val($('#emergencyRelationship').val());
+                    //Comments
+                    $('#entry_1242629666').val($('#comments').val());
+                    //Volunteer:
+
+                    if ($('#volunteer:checkbox:checked').length > 0) {
+                        $('#entry_196476760').val('Volunteer=Yes');
+                    }
+					
+
+					
+                    $('#submit').click();
+                    $('#entryForm').hide();
+                    $('.childField').val('');
+                    $('#submitFormFields').find('input:text').val('');
+                    $('#confirmationForm').show();
+                }
+                else {
+                    alert('Please fill out all required fields.\n\nThank You.');
+                }
+
+            }
+            catch (e) { alert("Page Error: " + e) }
+        }
+        function registerAnotherChild() {
+            $('#entryForm').show();
+            $('#confirmationForm').hide();
+        }
+    </script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">var submitted = false;</script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <div id="confirmationForm" class="hidden">
+         <br />
+        Thank you for registering <span id="registeredName"></span> for the Mountain Hoops Basketball Camp.
+        <br /><br />Register another child for the same family, click here -> <input type="button" value="Register another child" onclick="registerAnotherChild()"/>
+        <br /><br />Register another child for a different family, click here -> <input type="button" value="Register another child" onclick="window.location='MtnHoopsRegistrationAdmin.htm'"/>
+    </div>
+
+
+    <form id="entryForm" action="?">
+        <fieldset>
+			<div style="display:none;padding-bottom:5px" class="alert-message">Unfortunately the Edgewood Session for 3rd to 5th graders is full.  Aberdeen does have space for this age group.</div>
+            <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
+            <table style="width:560px;border:none;">
+			    <tr>
+                    <td>
+                        <div class="form-entry">
+                        <label class="q-item-label" for="liability">
+                            * Liability
+                        </label>
+                        <select name="liability" id="liability" title="Liability is required" class="required childField">
+                            <option value=""></option>
+                            <option value="Y">Signed</option>
+                            <option value="N">NOT Signed</option>
+                        </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                        <label class="q-item-label" for="payment">
+                           * Payment
+                        </label>
+                        <select name="payment" id="payment" title="Payment is required" class="required childField">
+                            <option value=""></option>
+                            <option value="Y">Paid</option>
+                            <option value="N">Not Paid</option>
+                        </select>
+                            </div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="fname">
+                                * First Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="required childField" id="fname" title="Child&#39;s first name is required">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="lname">
+                                * Child&#39;s Last Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="required childField" id="lname" dir="ltr" title="Child&#39;s Last Name is required">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="grade">
+                                * Child&#39;s Grade & Gender
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <select onchange="updateLocation(this)" name="grade" id="grade" class="required childField" title="Child&#39;s grade is required">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                            </select>
+                            &nbsp;&nbsp;&nbsp;
+                            <select name="gender" id="gender" title="Gender is required" class="required childField">
+                                <option value=""></option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div id="locationDiv" class="form-entry hidden">
+                            <label class="q-item-label" for="location">
+                                Location
+                            </label>
+                            <div class="secondary-text locationClinic" dir="ltr">Select EPICENTER or Aberdeen location</div>
+                            <select name="locationClinic" id="locationClinic" title="Location is required" class="required locationClinic childField">
+                                <option value=""></option>
+                                <option value="EPICENTER">EPICENTER in Edgewood</option>
+								<option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                            </select>
+                            <div class="secondary-text locationNotClinic1" dir="ltr">Select Aberdeen or Edgewood location</div>
+                            <select name="locationNotClinic1" id="locationNotClinic1" title="Location is required" class="required locationNotClinic1 childField">
+                                <option value=""></option>
+                                <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                                <option value="Edgewood">Edgewood Boys & Girls Club</option>
+                            </select>
+							<div class="secondary-text locationNotClinic2" dir="ltr">Select Aberdeen or Edgewood location</div>
+                            <select name="locationNotClinic2" id="locationNotClinic2" title="Location is required" class="required locationNotClinic2 childField">
+                                <option value=""></option>
+                                <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                                <option value="Edgewood">Edgewood Boys & Girls Club</option>
+                            </select>
+                        </div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="skillLevel">
+                                Child's Skill Level
+                            </label>
+                            <div class="secondary-text" dir="ltr">(1-beginner to 5-advanced)</div>
+                            <select name="skillLevel" id="skillLevel" title="Skill Level (1-beginner to 5-advanced)" class="required childField">
+                                <option value=""></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="shirtSize">
+                                * T-Shirt Size
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <select class="required childField" name="shirtSize" id="shirtSize" title="T-Shirt Size is required">
+                                <option value=""></option>
+                                <option value="YS">Youth S</option>
+                                <option value="YM">Youth M</option>
+                                <option value="YL">Youth L</option>
+                                <option value="YXL">Youth XL</option>
+                                <option value="AS">Adult S</option>
+                                <option value="AM">Adult M</option>
+                                <option value="AL">Adult L</option>
+                                <option value="AXL">Adult XL</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="parentFName">
+                                * Parent/Guardian First Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)" class="required" id="parentFName" dir="ltr" title="Parent/Guardian First Name is required">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="parentLName">
+                                * Parent/Guardian Last Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="parentLName" value="" class="required" onchange="this.value=toProperCase(this.value)" id="parentLName" dir="ltr" title="Parent/Guardian Last Name is required">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="childLivesWith">
+                                * Child Lives with
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <select class="required" name="childLivesWith" id="childLivesWith" title="Child Lives with is required">
+                                <option value=""></option>
+                                <option value="Mother">Mother</option>
+                                <option value="Father">Father</option>
+                                <option value="Both">Both</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="medical">
+                                Child Medical Conditions/Allergies
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="medical" value="" class="q-short" id="medical" dir="ltr" title="Medical Conditions/Allergies">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="address">
+                                * Address
+                            </label>
+                            <input type="text" name="address" value="" class="required" id="address" dir="ltr" title="Address is required">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="city">
+                                * City
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="city" value="" class="required" id="city" dir="ltr" title="City is required">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="state">
+                                * State
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" style="display:none" name="stateInput" value="" dir="ltr" title="State">
+                            <select name="state" id="state" class="required">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD" selected>Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="zip">
+                                * Zip Code
+                            </label>
+                            <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="required digits" id="zip" dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+
+                        <div class="form-entry">
+                            <label class="q-item-label" for="homephone1">
+                                * Home Phone
+                            </label>
+                            <div class="secondary-text" dir="ltr">If you only have a cell phone, use cell phone (Note: fields auto-tab)</div>
+                            <input class="helperField" type="text" id="homephone1" size=3 onkeyup="autotab(this, $('#homephone2'))" maxlength=3 onblur="setphone('homephone')">-
+                            <input class="helperField" onblur="setphone('homephone')" type="text" id="homephone2" size="3" onkeyup=" autotab(this, $('#homephone3'))" maxlength=3>-
+                            <input class="helperField" type="text" id="homephone3" size=4 maxlength=4 onblur="setphone('homephone')">
+                            <input name="homephone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="homephone" maxlength="10" minlength="10" class="required digits helperField" readonly tabindex="-1" title="Home phone is required.  If cell only, use cell phone." />
+                        </div>
+
+                        <div class="form-entry">
+                            <label class="q-item-label" for="cellphone1">
+                                * Cell Phone
+                            </label>
+                            <div class="secondary-text" dir="ltr">If you only have a home phone, add home phone (Note: fields auto-tab)</div>
+                            <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
+                            <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))" maxlength=3>-
+                            <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
+                            <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone" maxlength="10" minlength="10" class="required digits" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone." />
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <div class="form-entry">
+                            <label class="q-item-label" for="emailCheck">
+                                * Do you have a valid Email Address?
+                            </label>
+                            <div class="secondary-text" dir="ltr">We will communicate important information using email.  If you do not use email, check "No"</div>
+                            <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required." />Yes
+                            <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required." />No
+                            <label class="error" for="email"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="email_div" style="display:none">
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="email_1">
+                                * Email Address
+                            </label>
+                            <div class="secondary-text" dir="ltr">Please enter an email address that you use regularly.</div>
+                            <input class="helperField required" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="email_2">
+                                * Email Address Check
+                            </label>
+                            <div class="secondary-text" dir="ltr">Please enter your address again to confirm it is correct.</div>
+                            <input class="helperField required" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr" title="Email must match email address to the left.">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="emergencyContact">
+                                Emergency Contact Person
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="emergencyContact" value="" class="q-short" id="emergencyContact" dir="ltr" title="Emergency Contact Person">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="" for="emergencyPhone1">
+                                Emergency Contact Phone
+                            </label>
+                            <input class="helperField" type="text" id="emergencyPhone1" size=3 onkeyup="autotab(this, $('#emergencyPhone2'))" maxlength=3 onblur="setphone('emergencyPhone')">-
+                            <input class="helperField" onblur="setphone('emergencyPhone')" type="text" id="emergencyPhone2" size=3 onkeyup="    autotab(this, $('#emergencyPhone3'))" maxlength=3>-
+                            <input class="helperField" type="text" id="emergencyPhone3" size=4 maxlength=4 onblur="setphone('emergencyPhone')">
+                            <input class="helperField digits" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="emergencyPhone" maxlength="10" minlength="10" readonly tabindex="-1" />
+                        </div>
+                    </td>
+                </tr>
+
+            </table>
+
+            <div class="form-entry">
+                <label class="q-item-label" for="emergencyRelationship">
+                    Emergency Contact&#39;s Relationship to Child
+                </label>
+                <div class="secondary-text" dir="ltr"></div>
+                <input type="text" name="emergencyRelationship" value="" class="q-short" id="emergencyRelationship" dir="ltr" title="Emergency Contact&#39;s Relationship to Child  ">
+
+
+            </div>
+            <div class="form-entry">
+                <label class="q-item-label" for="comments">
+                    Comments/Requests
+                </label>
+                <div class="secondary-text" dir="ltr"></div>
+                <textarea name="comments" rows="4" cols="60" class="q-long" id="comments" dir="ltr" title="Comments/Requests  "></textarea>
+
+            </div>
+
+
+            <div class="form-entry">
+                <label class="q-item-label" for="volunteer">
+                    Check the box below if you would like to serve as a volunteer for the camp
+                </label>
+                <div class="secondary-text" dir="ltr"></div>
+                <input type="checkbox" name="volunteer" value="Yes, I would like to help, please contact me." id="volunteer" role="checkbox" class="q-checkbox">
+                <span class="choice-label">Yes, I would like to help, please contact me.</span>
+
+            </div>
+			<br/>
+            <div class="item navigate">
+                <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()">
+            </div>
+
+        </fieldset>
+        </form>
+        <form id="submitForm" action="https://docs.google.com/forms/d/12YqZ3TC5UL9FEf9_XEO_Gq-c0ImMIdbvL3mbc7hUcLk/formResponse" method="post"
+          target="hidden_iframe" onsubmit="submitted=true;">
+            <div id="submitFormFields"class="hidden">
+                Child First Name:
+                <input type="text" name="entry.468125125"  id="entry_468125125" value="" value="" />
+                Child Last Name:
+                <input type="text" name="entry.475256130" value="" id="entry_475256130"/>
+                Grade:
+                <input type="text" name="entry.1791211207" id="entry_1791211207" value="" />
+                Gender:
+                <input type="text" name="entry.1949776303" id="entry_1949776303" value="" />
+                Shirt Size:
+                <input type="text" name="entry.724904151" id="entry_724904151" value="" />
+                Skill Level:
+                <input type="text" name="entry.63752483" id="entry_63752483" value="" />
+                Medical:
+                <input type="text" name="entry.1654300607" id="entry_1654300607" value="" />
+                Location:
+                <input type="text" name="entry.1938819117" id="entry_1938819117" value="" />
+                Parent First Name:
+                <input type="text" name="entry_1906782859" id="entry_1906782859" value="" />
+                Parent Last Name:
+                <input type="text" name="entry_474647137" id="entry_474647137" value="" />
+                Child Lives With
+                <input type="text" name="entry_903779928" id="entry_903779928" value="" />
+                Address:
+                <input type="text" name="entry_1402976333" id="entry_1402976333" value="" />
+                City:
+                <input type="text" name="entry_1315311435" id="entry_1315311435" value="" />
+                State:
+                <input type="text" name="entry_215338488" id="entry_215338488" value="" />
+                Zip:
+                <input type="text" name="entry_1317122726" id="entry_1317122726" value="" />
+                Home Phone:
+                <input type="text" name="entry_1526387338" id="entry_1526387338" value="" />
+                Cell Phone:
+                <input type="text" name="entry_512266806" id="entry_512266806" value="" />
+                Email:
+                <input type="text" name="entry_2062229120" id="entry_2062229120" value="" />
+                Emergencey Contact
+                <input type="text" name="entry_2048136904" id="entry_2048136904" value="" />
+                Emergency Phone
+                <input type="text" name="entry_1254374332" id="entry_1254374332" value="" />
+                Emergency Person Relationship to Child
+                <input type="text" name="entry_580467603" id="entry_580467603" value="" />
+                Comments
+                <input type="text" name="entry_1242629666" id="entry_1242629666" value="" />
+                Volunteer:
+                <input type="text" name="entry_196476760" id="entry_196476760" value="" />
+                Paid
+                <input type="text" name="entry_836064026" id="entry_836064026" value="" />
+                Liability
+                <input type="text" name="entry_1420925338" id="entry_1420925338" value="" />
+                Session
+                <input type="text" name="entry_1481928124" id="entry_1481928124" />
+                Day 1
+                <input type="text" name="entry_1201960342" id="entry_1201960342" value="" />
+                Day 2
+                <input type="text" name="entry_918437581" id="entry_918437581" value="" />
+                Day 3
+                <input type="text" name="entry_406918706" id="entry_406918706" value="" />
+                Day 4
+                <input type="text" name="entry_1744989806" id="entry_1744989806" value="" />
+                Day 5
+                <input type="text" name="entry_774317920" id="entry_774317920" value="" />
+                Total
+                <input type="text" name="entry_543684174" id="entry_543684174" value="" />
+                Awards
+                <input type="text" name="entry_1555206858" id="entry_1555206858" value="" />
+                
+                <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
+            </div>
+        </form>
+ 
+</body>
+</html>

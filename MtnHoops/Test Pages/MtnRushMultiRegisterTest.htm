@@ -1,0 +1,142 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; chrome=1;">
+    <meta name="fragment" content="!">
+    <base target="_blank">
+    <title>Mountain Rush Camp Entry Form summer 2014</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="jquery.min.js"></script>
+    <script src="jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#entryForm").validate();
+        });
+
+        function setphone(fieldset) {
+            var setField = false;
+            for (i = 1; i < 4; i++) {
+                fieldobj = $('#' + fieldset + i);
+                if ($(fieldobj).val() == '' || $(fieldobj).val().length != $(fieldobj).attr('maxLength')) { setField = false; $('#' + fieldset).val(''); i = 4; } else { setField = true; }
+            }
+            if (setField) { $('#' + fieldset).val($('#' + fieldset + '1').val() + $('#' + fieldset + '2').val() + $('#' + fieldset + '3').val()) }
+        }
+        function autotab(origField, destField) {
+            if (origField.getAttribute && origField.value.length == origField.getAttribute("maxlength")) { destField.focus(); }
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function toProperCase(str) { return str.replace(/\b([a-z])/g, function (_, initial) { return initial.toUpperCase(); }); }
+
+        function checkemail(obj) {
+            if (obj.value == 'Yes') {
+                $('#' + obj.name + '_div').show();
+                $('#' + obj.name + '_1').val('');
+                $('#' + obj.name + '_2').val('');
+            }
+            else {
+                $('#' + obj.name + '_div').hide();
+                $('#' + obj.name + '_1').val('sorry@noemail.com');
+                $('#' + obj.name + '_2').val('sorry@noemail.com');
+            }
+        }
+
+        function postToGoogle() {
+            try {
+
+                //window.scrollTo(0, 0);
+               
+                alert('hi 1')
+                $('#submit').click();
+                alert('hi 2')
+                $('#submit').click();
+                alert('hi 3')
+                $('#submit').click();
+                alert('hi 4')
+
+            }
+            catch (e) { alert("Page Error: " + e) }
+        }
+
+    </script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">var submitted = false;</script>
+    <iframe name="hidden_iframe" id="hidden_iframe"
+            style="display:none;" onload="if(submitted)
+{ window.location = 'MtnRushConfirmation.htm'; }"></iframe>
+    <form id="entryForm" action="https://docs.google.com/forms/d/1_ey0s8Y9TAINOkYTnxSfRUQS4PpSSdYvH1w5pj3U5wk/formResponse" method="post"
+          target="hidden_iframe" onsubmit="submitted=true;">
+        <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-text">
+                <div class="ss-form-entry">
+                    <label class="ss-q-item-label" for="entry_632881346">
+                        <div class="ss-q-title">
+                            Parent First
+                        </div>
+                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                    </label>
+                    <input type="text" name="entry.632881346" value="" class="ss-q-short" id="entry_632881346" dir="auto" aria-label="Parent First  " title="">
+                    <div class="error-message"></div>
+                    <div class="required-message">This is a required question</div>
+                </div>
+            </div>
+        </div> <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-text">
+                <div class="ss-form-entry">
+                    <label class="ss-q-item-label" for="entry_683643473">
+                        <div class="ss-q-title">
+                            Parent Last
+                        </div>
+                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                    </label>
+                    <input type="text" name="entry.683643473" value="" class="ss-q-short" id="entry_683643473" dir="auto" aria-label="Parent Last  Must contain " pattern=".*.*" title="Must contain ">
+                    <div class="error-message">Must contain </div>
+                    <div class="required-message">This is a required question</div>
+                </div>
+            </div>
+        </div> <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-text">
+                <div class="ss-form-entry">
+                    <label class="ss-q-item-label" for="entry_276936467">
+                        <div class="ss-q-title">
+                            Child First
+                        </div>
+                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                    </label>
+                    <input type="text" name="entry.276936467" value="" class="ss-q-short" id="entry_276936467" dir="auto" aria-label="Child First  " title="">
+                    <div class="error-message"></div>
+                    <div class="required-message">This is a required question</div>
+                </div>
+            </div>
+        </div> <div class="ss-form-question errorbox-good" role="listitem">
+            <div dir="ltr" class="ss-item  ss-text">
+                <div class="ss-form-entry">
+                    <label class="ss-q-item-label" for="entry_2102930664">
+                        <div class="ss-q-title">
+                            Child Last
+                        </div>
+                        <div class="ss-q-help ss-secondary-text" dir="ltr"></div>
+                    </label>
+                    <input type="text" name="entry.2102930664" value="" class="ss-q-short" id="entry_2102930664" dir="auto" aria-label="Child Last  " title="">
+                    <div class="error-message"></div>
+                    <div class="required-message">This is a required question</div>
+                </div>
+            </div>
+        </div>
+        
+        <input type="button" onclick="postToGoogle()" value="Post Data" />
+        <input type="submit" value="Submit" style="display:none" id="submit"/>
+    </form>
+</body>
+</html>

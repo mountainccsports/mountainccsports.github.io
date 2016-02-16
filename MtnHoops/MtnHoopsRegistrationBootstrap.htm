@@ -221,26 +221,26 @@
     </script>
 </head>
 
-<body> 
-   
+<body>
+
     <div id="header" style="background-color:#3B7794;display:none;position:fixed;top:0px;left:0px;right:0px">
-       <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
-       <img height="53" style="margin: 10px;position:absolute;top:0px;right:10px" alt="" src="img/Mtn-Hoops-Logo.jpg">				
-	</div>
+        <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
+        <img height="53" style="margin: 10px;position:absolute;top:0px;right:10px" alt="" src="img/Mtn-Hoops-Logo.jpg">
+    </div>
     <div id="header" style="background-color:#000000;">
-       <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
-       <img height="96" style="margin:0px;position:absolute;top:-12px;right:15px" alt="" src="img/HoopsLogo_04.png">				
-	</div>
+        <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
+        <img height="96" style="margin:0px;position:absolute;top:-12px;right:15px" alt="" src="img/HoopsLogo_04.png">
+    </div>
     <div id="header" style="background-color:#9BBB3D;color:#000000;text-align:center;font-weight:bold;">
-       Mountain Hoops Registration				
-	</div>
-     <div class="container">
-    
+        Mountain Hoops Registration
+    </div>
+    <div class="container">
+
         <script type="text/javascript">
             var submitted = false;
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
-        <div id="confirmationForm" class="hidden">
+        <div id="confirmationForm" class="col-xs-12" style="display:none">
             <br /> Thank you for registering <span id="registeredName"></span> for the Mountain Hoops Basketball Camp.
             <br />
             <br />Here are a few reminders and important things to know about the camp:
@@ -264,7 +264,8 @@
             sign up <a target="_parent" href="http://www.mountaincc.org/HoopsVolunteer">HERE</a>.
             <br />
             <br /> It’s going to be a great camp and we’re really looking forward to it. If you have any questions, please contact
-            the Camp Director, Luke Erickson, at <a href="mailto:Luke@MountainCC.org?subject=Mountain%20Hoops%20Camp" target="_top">Luke@MountainCC.org</a>.
+            the Camp Director, Luke Erickson, at <a href="mailto:Luke@MountainCC.org?subject=Mountain%20Hoops%20Camp
+       " target="_top">Luke@MountainCC.org</a>.
             <br />
             <br />See you soon!
             <br />Luke Erickson
@@ -274,9 +275,8 @@
         </div>
 
         <form id="entryForm" action="?" role="form">
-            <fieldset>
-                <div style="display:none;padding-bottom:5px" class="alert-message">Unfortunately the Edgewood Session for 3rd to 5th graders is full. Aberdeen does have space for this age
-                    group.
+                <div style="display:none;padding-bottom:5px" class="alert-message">
+                    Unfortunately the Edgewood Session for 3rd to 5th graders is full. Aberdeen does have space for this age group.
                 </div>
                 <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
                 <div class="row">
@@ -284,16 +284,14 @@
                         <label for="fname">
                             * Child&#39;s First Name
                         </label>
-                        <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
-                        id="fname" title="Child&#39;s first name is required">
+                        <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField" id="fname" title="Child&#39;s first name is required">
                     </div>
                     <div class="col-xs-6 form-group">
 
                         <label for="lname">
                             * Child&#39;s Last Name
                         </label>
-                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
-                        id="lname" dir="ltr" title="Child&#39;s Last Name is required">
+                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField" id="lname" dir="ltr" title="Child&#39;s Last Name is required">
                     </div>
                 </div>
                 <div class="row">
@@ -376,8 +374,7 @@
                         <label for="shirtSize">
                             * T-Shirt Size
                         </label>
-                        <select class="form-control required childField" name="shirtSize" id="shirtSize" title="T-Shirt
-                    Size is required">
+                        <select class="form-control required childField" name="shirtSize" id="shirtSize" title="T-Shirt Size is required">
                             <option value=""></option>
                             <option value="YS">Youth S</option>
                             <option value="YM">Youth M</option>
@@ -392,25 +389,18 @@
 
                 </div>
                 <div class="row">
-
-
                     <div class="col-xs-6 form-group">
                         <label for="parentFName">
                             * Parent/Guardian First Name
                         </label>
-
-                        <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)
-                   " class="form-control required" id="parentFName" dir="ltr" title="Parent/Guardian First Name is required">
+                        <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)" class="form-control required" id="parentFName" dir="ltr" title="Parent/Guardian First Name is required">
                     </div>
-
 
                     <div class="col-xs-6 form-group">
                         <label for="parentLName">
                             * Parent/Guardian Last Name
                         </label>
-
-                        <input type="text" name="parentLName" value="" class="form-control required" onchange="this.value=toProperCase(this.value)"
-                        id="parentLName" dir="ltr" title="Parent/Guardian Last Name is required">
+                        <input type="text" name="parentLName" value="" class="form-control required" onchange="this.value=toProperCase(this.value)" id="parentLName" dir="ltr" title="Parent/Guardian Last Name is required">
                     </div>
 
 
@@ -419,10 +409,10 @@
 
                     <div class="col-xs-6 form-group">
                         <label for="childLivesWith">
-                            * Child Lives with
+                            * Child lives with
                         </label>
 
-                        <select class="form-control required" name="childLivesWith" id="childLivesWith" title="Child Lives with is required">
+                        <select class="form-control required" name="childLivesWith" id="childLivesWith" title="Child lives with is required">
                             <option value=""></option>
                             <option value="Mother">Mother</option>
                             <option value="Father">Father</option>
@@ -526,8 +516,7 @@
                         <label for="zip">
                             * Zip Code
                         </label>
-                        <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="form-control required digits" id="zip"
-                        dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
+                        <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="form-control required digits" id="zip" dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
                     </div>
 
                 </div>
@@ -540,8 +529,7 @@
                             If you only have a cell phone, use cell phone
                             <!--<div class="secondary-text" dir="ltr"></div>-->
                          </small>
-                        <input name="homephone" id="homephone" maxlength="12" minlength="12" class="phonemask form-control required" tabindex="-1"
-                        title="Home phone is required. If cell only, use cell phone." />
+                        <input name="homephone" id="homephone" maxlength="12" minlength="12" class="phonemask form-control required" title="Home phone is required. If cell only, use cell phone." />
                     </div>
                     <div class="col-xs-6 form-group">
                         <label for="cellphone1">
@@ -550,8 +538,7 @@
                         <small class="text-muted">
                                 If you only have a home phone, input home phone here as well.
                             </small>
-                        <input name="cellphone" maxlength="12" minlength="12" class="form-control required phonemask" tabindex="-1" title="Cell Phone is required. If none, use home phone."
-                        />
+                        <input name="cellphone" maxlength="12" minlength="12" class="form-control required phonemask" title="Cell Phone is required. If none, use home phone."/>
                     </div>
                 </div>
                 <div class="row">
@@ -560,20 +547,18 @@
                             * Do you have a valid Email Address?
                         </label>
                         <small class="text-muted">
-                            We will communicate important information using email. If you do not use email, check"No"
+                            We will communicate important information using email. If you do not use email, check "No"
                          </small>
                         <br/>
-                        <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
-                        />Yes
-                        <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."
-                        />No
+                        <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."/>Yes
+                        <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."/>No
                         <label class="error" for="email"></label>
                     </div>
 
                 </div>
                 <div class="row" id="email_div" style="display:none">
 
-                    <div class="col-xs-6  form-group">
+                    <div class="col-xs-6 form-group">
                         <label for="email_1">
                             * Email Address
                         </label>
@@ -608,7 +593,7 @@
                         <label class="" for="emergencyPhone">
                             Emergency Contact Phone
                         </label>
-                        <input class="helperField form-control phonemask" id="emergencyPhone" maxlength="12" minlength="12" tabindex="-1" />
+                        <input class="helperField form-control phonemask" id="emergencyPhone" maxlength="12" minlength="12"/>
                     </div>
 
                 </div>
@@ -634,20 +619,17 @@
                             Check the box below if you would like to serve as a volunteer for the camp
                         </label>
                         <br/>
-                        <input type="checkbox" name="volunteer" value="Yes, I would like to help, please contact me." id="volunteer" role="checkbox"
-                        class="">
+                        <input type="checkbox" name="volunteer" value="" id="volunteer" role="checkbox" class="">
                         <span class="choice-label">Yes, I would like to help, please contact me.</span>
 
                     </div>
                 </div>
 
 
-
-
                 <div class="row">
-                    <div class="col-xs-6 form-group">
-                        <div style="padding:5px;border:solid black 1px;width: 500px;height: 150px;overflow: scroll;">
-                            <span style="font-weight:bold">I declare that I am the legal guardian of the child(ren) registering for this camp and give permission for such child(ren) to attend the Mountain Hoops Basketball Camp.</span>
+                    <div class="col-xs-12 form-group">
+                        <div style="height:150px;overflow-y:scroll;border:solid #9BBB3D 4px;border-style:ridge;padding:10px;">
+                        <span style="font-weight:bold">I declare that I am the legal guardian of the child(ren) registering for this camp and give permission for such child(ren) to attend the Mountain Hoops Basketball Camp.</span>
                             <ul>
                                 <li>I hereby authorize representatives for Mountain Christian Church, when I am not present with
                                     my child(ren) to consent for all reasonable and necessary medical and/or surgical treatment
@@ -700,20 +682,27 @@
                                 </li>
                             </ul>
                         </div>
-                        <br/>
-                        <div style="" class="form-group">
-                            <input type="checkbox" name="liability" value="“I have read and agree to the Liability, Medical,
-                    & Photo Release." id="liability" role="checkbox" class="q-checkbox required">
+                     </div>
+                </div>
+
+
+                <div class="row">
+                        <div class="col-xs-12">
+                            <input type="checkbox" name="liability" value="" id="liability" role="checkbox" class="required">
                             <span class="choice-label">I have read and agree to the Liability, Medical, & Photo Release.</span>
                             <label class="error" for="liability"></label>
-                            <br/><a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/LiabilityMedicalPhotoRelease.pdf">Click here to print the Liability, Medical, & Photo Release form.</a>
+                            <br/>
+                            <a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/LiabilityMedicalPhotoRelease.pdf">Click here to print the Liability, Medical, & Photo Release form.</a>
                         </div>
-                        <br/>
-                        <div class="item navigate">
+                </div>
+                <br/>
+                <div class="row">
+                        <div class="col-xs-12">
+                        <!--<div class="item navigate">-->
                             <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default">
-                        </div>
-                    </div>
-            </fieldset>
+                        <!--</div>-->
+                        <br/><br/>
+                    </div></div>
         </form>
 
         <form id="submitForm" action="https://docs.google.com/forms/d/12YqZ3TC5UL9FEf9_XEO_Gq-c0ImMIdbvL3mbc7hUcLk/formResponse"

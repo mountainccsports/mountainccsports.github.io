@@ -8,7 +8,7 @@
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Mountain Hoops Camp Entry Form</title>
-    <!--<link href="style.css" rel="stylesheet" type="text/css" />-->
+    <link href="style.2016.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
@@ -22,16 +22,25 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#entryForm").validate();
-        });
-        
-        function setphone(fieldset) {
-            var setField = false;
-            for (i = 1; i < 4; i++) {
-                fieldobj = $('#' + fieldset + i);
-                if ($(fieldobj).val() == '' || $(fieldobj).val().length != $(fieldobj).attr('maxLength')) { setField = false; $('#' + fieldset).val(''); i = 4; } else { setField = true; }
-            }
-            if (setField) { $('#' + fieldset).val($('#' + fieldset + '1').val() + $('#' + fieldset + '2').val() + $('#' + fieldset + '3').val()) }
-        }
+            
+            /* Phone number mask START*/
+            $(".phonemask").mask("999-999-9999");
+            
+            $(".phonemask").on("blur", function() {
+                var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+                
+                if( last.length == 3 ) {
+                    var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+                    var lastfour = move + last;
+                    
+                    var first = $(this).val().substr( 0, 9 );
+                    
+                    $(this).val( first + '-' + lastfour );
+                }
+            });
+            /* Phone number mask END*/
+        });      
+
         function autotab(origField, destField) {
             if (origField.getAttribute && origField.value.length == origField.getAttribute("maxlength")) { destField.focus(); }
         }
@@ -60,7 +69,7 @@
             try {
             if (obj.value != '') {
                 //$('#locationDiv').show();
-                if (obj.value == "1" || obj.value == "2") {
+                if (obj.value =="1" || obj.value =="2") {
                     //alert('show1')
                     $('.locationClinic').show();
                     $('.locationNotClinic1').hide();
@@ -68,7 +77,7 @@
 					$('#locationClinic').val('');
 					$('#locationNotClinic1').val('');
                     $('#locationNotClinic2').val('');
-                } else if (obj.value == "3" || obj.value == "4") {
+                } else if (obj.value =="3" || obj.value =="4") {
                     $('.locationClinic').hide();
                     $('.locationNotClinic1').show();
                     $('.locationNotClinic2').hide();
@@ -164,16 +173,19 @@
                     //Zip
                     $('#entry_1317122726').val($('#zip').val());
                     //Home Phone
-                    $('#entry_1526387338').val($('#homephone1').val() + '-' + $('#homephone2').val() + '-' + $('#homephone3').val());
+                    //$('#entry_1526387338').val($('#homephone1').val() + '-' + $('#homephone2').val() + '-' + $('#homephone3').val());
+                    $('#entry_1526387338').val($('#homephone').val());
                     //Cell Phone
-                    $('#entry_512266806').val($('#cellphone1').val() + '-' + $('#cellphone2').val() + '-' + $('#cellphone3').val());
+                    //$('#entry_512266806').val($('#cellphone1').val() + '-' + $('#cellphone2').val() + '-' + $('#cellphone3').val());
+                    $('#entry_512266806').val($('#cellphone').val());
                     //Email
                     $('#entry_2062229120').val($('#email_1').val());
-                    //Emergencey Contact
+                    //Emergency Contact
                     $('#entry_2048136904').val($('#emergencyContact').val());
                     //Emergency Phone
                     if ($('#emergencyPhone').val() != '') {
-                        $('#entry_1254374332').val($('#emergencyPhone1').val() + '-' + $('#emergencyPhone2').val() + '-' + $('#emergencyPhone3').val());
+                        //$('#entry_1254374332').val($('#emergencyPhone1').val() + '-' + $('#emergencyPhone2').val() + '-' + $('#emergencyPhone3').val());
+                        $('#entry_1254374332').val($('#emergencyPhone').val());
                     }
                     //Emergencey Relationship to Child
                     $('#entry_580467603').val($('#emergencyRelationship').val());
@@ -200,7 +212,7 @@
                 }
 
             }
-            catch (e) { alert("Page Error: " + e) }
+            catch (e) { alert("Page Error:" + e) }
         }
         function registerAnotherChild() {
             $('#entryForm').show();
@@ -220,7 +232,7 @@
             <br />
             <br />Here are a few reminders and important things to know about the camp:
             <ul>
-                <li><strong>Camp Dates:</strong> April 2, 9, 16, 23</li>
+                <li><strong>Camp Dates:</strong> April 2, 9, 16 and 23</li>
                 <li><strong>Location and Time</strong>: <span id="registeredLocation"></span>&nbsp;<span id="registeredTime"></span></li>
                 <li><strong>Check-in</strong>: Please arrive 10 minutes early to check in</li>
                 <li><strong>You have agreed to the Liability, Medical, Photo Release Form.  </strong><a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/LiabilityMedicalPhotoRelease.pdf">Click here to print the form.</a>.</li>
@@ -255,43 +267,39 @@
                 </div>
                 <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
                 <div class="row">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="fname">
-                                * Child&#39;s First Name
-                            </label>
-                            <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
-                            id="fname" title="Child&#39;s first name is required">
-                        </div>
+                    <div class="col-xs-6 form-group">
+                        <label for="fname">
+                            * Child&#39;s First Name
+                        </label>
+                        <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
+                        id="fname" title="Child&#39;s first name is required">
                     </div>
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="lname">
-                                * Child&#39;s Last Name
-                            </label>
-                            <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
-                            id="lname" dir="ltr" title="Child&#39;s Last Name is required">
-                        </div>
+                    <div class="col-xs-6 form-group">
+
+                        <label for="lname">
+                            * Child&#39;s Last Name
+                        </label>
+                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="form-control required childField"
+                        id="lname" dir="ltr" title="Child&#39;s Last Name is required">
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="grade">
-                                * Child&#39;s Grade
-                            </label>
-                            <select onchange="updateLocation(this)" name="grade" id="grade" class="form-control required childField" title="Child&#39;s grade is required">
-                                <option value=""></option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                            </select>
-                        </div>
+                    <div class="col-xs-6 form-group">
+
+                        <label for="grade">
+                            * Child&#39;s Grade
+                        </label>
+                        <select onchange="updateLocation(this)" name="grade" id="grade" class="form-control required childField" title="Child&#39;s grade is required">
+                            <option value=""></option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
@@ -307,75 +315,67 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6">
-                        <div id="locationDiv" class="form-group" style="display:none">
-                            <label for="location">
-                                Location
-                            </label>
-                            <div class="secondary-text locationClinic" dir="ltr">Select EPICENTER or Aberdeen location</div>
-                            <select name="locationClinic" id="locationClinic" title="Location is required" class="form-control required locationClinic childField">
-                                <option value=""></option>
-                                <option value="EPICENTER">EPICENTER in Edgewood</option>
-                                <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
-                            </select>
-                            <div class="secondary-text locationNotClinic1" dir="ltr">Select Aberdeen or Edgewood location</div>
-                            <select name="locationNotClinic1" id="locationNotClinic1" title="Location is required" class="form-control required locationNotClinic1 childField">
-                                <option value=""></option>
-                                <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
-                                <option value="Edgewood">Edgewood Boys & Girls Club</option>
-                            </select>
-                            <div class="secondary-text locationNotClinic2" dir="ltr">Select Aberdeen or Edgewood location</div>
-                            <select name="locationNotClinic2" id="locationNotClinic2" title="Location is required" class="form-control required locationNotClinic2 childField">
-                                <option value=""></option>
-                                <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
-                                <option value="Edgewood">Edgewood Boys & Girls Club</option>
-                            </select>
-                        </div>
-                        <div class="col-xs-6">
-                            &nbsp;
-                        </div>
+                    <div id="locationDiv" class="col-xs-12 form-group" style="display:none">
+                        <label for="location">
+                            Location
+                        </label>
+                        <div class="secondary-text locationClinic" dir="ltr">Select EPICENTER or Aberdeen location</div>
+                        <select name="locationClinic" id="locationClinic" title="Location is required" class="form-control required locationClinic childField">
+                            <option value=""></option>
+                            <option value="EPICENTER">EPICENTER in Edgewood</option>
+                            <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                        </select>
+                        <div class="secondary-text locationNotClinic1" dir="ltr">Select Aberdeen or Edgewood location</div>
+                        <select name="locationNotClinic1" id="locationNotClinic1" title="Location is required" class="form-control required locationNotClinic1 childField">
+                            <option value=""></option>
+                            <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                            <option value="Edgewood">Edgewood Boys & Girls Club</option>
+                        </select>
+                        <div class="secondary-text locationNotClinic2" dir="ltr">Select Aberdeen or Edgewood location</div>
+                        <select name="locationNotClinic2" id="locationNotClinic2" title="Location is required" class="form-control required locationNotClinic2 childField">
+                            <option value=""></option>
+                            <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
+                            <option value="Edgewood">Edgewood Boys & Girls Club</option>
+                        </select>
                     </div>
                 </div>
 
 
 
                 <div class="row">
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="skillLevel">
-                                Child's Skill Level
-                            </label>
-                            <select name="skillLevel" id="skillLevel" title="Skill Level (1-beginner to 5-advanced)" class="form-control required childField">
-                                <option value=""></option>
-                                <option value="1">1 - Beginner</option>
-                                <option value="2">2 - Below Average</option>
-                                <option value="3">3 - Average</option>
-                                <option value="4">4 - Above Average</option>
-                                <option value="5">5 - Advanced</option>
-                            </select>
-                        </div>
+                    <div class="col-xs-6 form-group">
+
+                        <label for="skillLevel">
+                            Child's Skill Level
+                        </label>
+                        <select name="skillLevel" id="skillLevel" title="Skill Level (1-beginner to 5-advanced)" class="form-control required childField">
+                            <option value=""></option>
+                            <option value="1">1 - Beginner</option>
+                            <option value="2">2 - Below Average</option>
+                            <option value="3">3 - Average</option>
+                            <option value="4">4 - Above Average</option>
+                            <option value="5">5 - Advanced</option>
+                        </select>
                     </div>
 
 
-                    <div class="col-xs-6">
-                        <div class="form-group">
-                            <label for="shirtSize">
-                                * T-Shirt Size
-                            </label>
-                            <select class="form-control required childField" name="shirtSize" id="shirtSize" title="T-Shirt Size is required">
-                                <option value=""></option>
-                                <option value="YS">Youth S</option>
-                                <option value="YM">Youth M</option>
-                                <option value="YL">Youth L</option>
-                                <option value="YXL">Youth XL</option>
-                                <option value="AS">Adult S</option>
-                                <option value="AM">Adult M</option>
-                                <option value="AL">Adult L</option>
-                                <option value="AXL">Adult XL</option>
-                            </select>
-                        </div>
+                    <div class="col-xs-6 form-group">
+                        <label for="shirtSize">
+                            * T-Shirt Size
+                        </label>
+                        <select class="form-control required childField" name="shirtSize" id="shirtSize" title="T-Shirt
+                    Size is required">
+                            <option value=""></option>
+                            <option value="YS">Youth S</option>
+                            <option value="YM">Youth M</option>
+                            <option value="YL">Youth L</option>
+                            <option value="YXL">Youth XL</option>
+                            <option value="AS">Adult S</option>
+                            <option value="AM">Adult M</option>
+                            <option value="AL">Adult L</option>
+                            <option value="AXL">Adult XL</option>
+                        </select>
                     </div>
-
 
                 </div>
                 <div class="row">
@@ -386,8 +386,8 @@
                             * Parent/Guardian First Name
                         </label>
 
-                        <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)" class="form-control required"
-                        id="parentFName" dir="ltr" title="Parent/Guardian First Name is required">
+                        <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)
+                   " class="form-control required" id="parentFName" dir="ltr" title="Parent/Guardian First Name is required">
                     </div>
 
 
@@ -430,8 +430,6 @@
 
                 </div>
                 <div class="row">
-
-
                     <div class="col-xs-6 form-group">
                         <label for="address">
                             * Address
@@ -447,12 +445,8 @@
 
                         <input type="text" name="city" value="" class="form-control required" id="city" dir="ltr" title="City is required">
                     </div>
-
-
                 </div>
                 <div class="row">
-
-
                     <div class="col-xs-6 form-group">
                         <label for="state">
                             * State
@@ -523,47 +517,40 @@
                         dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
                     </div>
 
-
                 </div>
                 <div class="row">
-
-
                     <div class="col-xs-6 form-group">
                         <label for="homephone1">
                             * Home Phone
                         </label>
-                        <div class="secondary-text" dir="ltr">If you only have a cell phone, use cell phone (Note: fields auto-tab)</div>
-                        <input class="helperField" type="text" id="homephone1" size=3 onkeyup="autotab(this, $('#homephone2'))" maxlength=3 onblur="setphone('homephone')">-
-                        <input class="helperField" onblur="setphone('homephone')" type="text" id="homephone2" size="3" onkeyup=" autotab(this, $('#homephone3'))"
-                        maxlength=3>-
-                        <input class="helperField" type="text" id="homephone3" size=4 maxlength=4 onblur="setphone('homephone')">
-                        <input name="homephone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="homephone"
-                        maxlength="10" minlength="10" class="form-control required digits helperField" readonly tabindex="-1"
-                        title="Home phone is required.  If cell only, use cell phone." />
+                        <small class="text-muted">
+                            If you only have a cell phone, use cell phone (Note: fields auto-tab)
+                            <!--<div class="secondary-text" dir="ltr"></div>-->
+                         </small>
+                        <input name="homephone" id="homephone" maxlength="12" minlength="12" class="phonemask form-control required" tabindex="-1"
+                        title="Home phone is required. If cell only, use cell phone." />
                     </div>
-                </div>
-                <div class="row">
                     <div class="col-xs-6 form-group">
                         <label for="cellphone1">
                             * Cell Phone
                         </label>
-                        <div class="secondary-text" dir="ltr">If you only have a home phone, add home phone (Note: fields auto-tab)</div>
-                        <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
-                        <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))"
-                        maxlength=3>-
-                        <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
-                        <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone"
-                        maxlength="10" minlength="10" class="form-control required digits" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone."
+                        <small class="text-muted">
+                                If you only have a home phone, input home phone here as well.
+                            </small>
+                        <input name="cellphone" maxlength="12" minlength="12" class="form-control required phonemask" tabindex="-1" title="Cell Phone is required. If none, use home phone."
                         />
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-6 form-group">
+                    <div class="col-xs-12 form-group">
                         <label for="emailCheck">
                             * Do you have a valid Email Address?
                         </label>
-                        <div class="secondary-text" dir="ltr">We will communicate important information using email. If you do not use email, check "No"</div>
-                        <input class="form-control required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
+                        <small class="text-muted">
+                            We will communicate important information using email. If you do not use email, check"No"
+                         </small>
+                        <br/>
+                        <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
                         />Yes
                         <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."
                         />No
@@ -571,24 +558,24 @@
                     </div>
 
                 </div>
-                <div class="row">
+                <div class="row" id="email_div" style="display:none">
 
-                    <div class="form-group" id="email_div" style="display:none">
+                    <div class="col-xs-6  form-group">
                         <label for="email_1">
                             * Email Address
                         </label>
-                        <div class="secondary-text" dir="ltr">Please enter an email address that you use regularly.</div>
-                        <input class="helperField required" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                        <input class="helperField required form-control" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
                     </div>
-
-
 
                     <div class="col-xs-6 form-group">
                         <label for="email_2">
                             * Email Address Check
                         </label>
-                        <div class="secondary-text" dir="ltr">Please enter your address again to confirm it is correct.</div>
-                        <input class="helperField required" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr" title="Email must match email address to the left.">
+                        <small class="text-muted">
+                            Please enter your address again to confirm it is correct.
+                         </small>
+                        <input class="helperField required form-control" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
+                        title="Email must match email address to the left.">
                     </div>
 
 
@@ -600,123 +587,119 @@
                         <label for="emergencyContact">
                             Emergency Contact Person
                         </label>
-
-                        <input type="text" name="emergencyContact" value="" class="q-short" id="emergencyContact" dir="ltr" title="Emergency Contact Person">
+                        <input type="text" name="emergencyContact" value="" class="form-control" id="emergencyContact" dir="ltr" title="Emergency Contact Person">
                     </div>
 
 
                     <div class="col-xs-6 form-group">
-                        <label class="" for="emergencyPhone1">
+                        <label class="" for="emergencyPhone">
                             Emergency Contact Phone
                         </label>
-                        <input class="helperField" type="text" id="emergencyPhone1" size=3 onkeyup="autotab(this, $('#emergencyPhone2'))" maxlength=3
-                        onblur="setphone('emergencyPhone')">-
-                        <input class="helperField" onblur="setphone('emergencyPhone')" type="text" id="emergencyPhone2" size=3 onkeyup="    autotab(this, $('#emergencyPhone3'))"
-                        maxlength=3>-
-                        <input class="helperField" type="text" id="emergencyPhone3" size=4 maxlength=4 onblur="setphone('emergencyPhone')">
-                        <input class="helperField digits" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;"
-                        id="emergencyPhone" maxlength="10" minlength="10" readonly tabindex="-1" />
+                        <input class="helperField form-control phonemask" id="emergencyPhone" maxlength="12" minlength="12" tabindex="-1" />
                     </div>
 
                 </div>
                 <div class="row">
-
-
-
                     <div class="col-xs-6 form-group">
                         <label for="emergencyRelationship">
                             Emergency Contact&#39;s Relationship to Child
                         </label>
-
-                        <input type="text" name="emergencyRelationship" value="" class="q-short" id="emergencyRelationship" dir="ltr" title="Emergency Contact&#39;s Relationship to Child  ">
-
+                        <input type="text" name="emergencyRelationship" value="" class="form-control" id="emergencyRelationship" dir="ltr" title="Emergency Contact&#39;s Relationship to Child">
                     </div>
-                    <div class="row">
-                    </div>
+                </div>
+                <div class="row">
+                    
                     <div class="col-xs-6 form-group">
                         <label for="comments">
                             Comments/Requests
                         </label>
-
-                        <textarea name="comments" rows="4" cols="60" class="q-long" id="comments" dir="ltr" title="Comments/Requests  "></textarea>
-
+                        <textarea name="comments" rows="4" cols="60" class="form-control" id="comments" dir="ltr" title="Comments/Requests"></textarea>
                     </div>
-
-
+                    
                     <div class="col-xs-6 form-group">
                         <label for="volunteer">
                             Check the box below if you would like to serve as a volunteer for the camp
                         </label>
-
+                        <br/>
                         <input type="checkbox" name="volunteer" value="Yes, I would like to help, please contact me." id="volunteer" role="checkbox"
-                        class="q-checkbox">
+                        class="">
                         <span class="choice-label">Yes, I would like to help, please contact me.</span>
 
                     </div>
                 </div>
+
+
+
+
                 <div class="row">
-                    <div style="padding:5px;border:solid black 1px;width: 500px;height: 150px;overflow: scroll;">
-                        <span style="font-weight:bold">I declare that I am the legal guardian of the child(ren) registering for this camp and give permission for such child(ren) to attend the Mountain Hoops Basketball Camp.</span>
-                        <ul>
-                            <li>I hereby authorize representatives for Mountain Christian Church, when I am not present with
-                                my child(ren) to consent for all reasonable and necessary medical and/or surgical treatment
-                                and procedures which are required for child(ren) named on the other side of this form.</li>
+                    <div class="col-xs-6 form-group">
+                        <div style="padding:5px;border:solid black 1px;width: 500px;height: 150px;overflow: scroll;">
+                            <span style="font-weight:bold">I declare that I am the legal guardian of the child(ren) registering for this camp and give permission for such child(ren) to attend the Mountain Hoops Basketball Camp.</span>
+                            <ul>
+                                <li>I hereby authorize representatives for Mountain Christian Church, when I am not present with
+                                    my child(ren) to consent for all reasonable and necessary medical and/or surgical treatment
+                                    and procedures which are required for child(ren) named on the other side of this form.</li>
 
-                            <li>I understand that in such an emergency, reasonable attempts would first be made to contact me,
-                                time and conditions permitting, and that in any event, I will be notified of any action taken
-                                as soon as reasonably possible.</li>
+                                <li>I understand that in such an emergency, reasonable attempts would first be made to contact
+                                    me, time and conditions permitting, and that in any event, I will be notified of any
+                                    action taken as soon as reasonably possible.
+                                </li>
 
-                            <li>I release Mountain Christian Church, Ames Memorial UMC & any other parties acting on their behalf
-                                from liability in case of an accident.</li>
-                        </ul>
-                        <span style="font-weight:bold">I further agree and understand that:</span>
-                        <ul>
-                            <li>The rules/directives for the Mountain Hoops Basketball Camp are designed and put into practice
-                                for my safety and well-being. My child(ren) is to follow all rules and directives that are
-                                conveyed to me verbally or in written form related to the Camp. Failing to comply with these
-                                rules and directives can result in injury to my child(ren) or others and is also grounds
-                                for the Mountain Hoops Camp staff to restrict my participation in the Camp.</li>
+                                <li>I release Mountain Christian Church, Ames Memorial UMC & any other parties acting on their
+                                    behalf from liability in case of an accident.</li>
+                            </ul>
+                            <span style="font-weight:bold">I further agree and understand that:</span>
+                            <ul>
+                                <li>The rules/directives for the Mountain Hoops Basketball Camp are designed and put into practice
+                                    for my safety and well-being. My child(ren) is to follow all rules and directives that
+                                    are conveyed to me verbally or in written form related to the Camp. Failing to comply
+                                    with these rules and directives can result in injury to my child(ren) or others and is
+                                    also grounds for the Mountain Hoops Camp staff to restrict my participation in the Camp.</li>
 
-                            <li>My child(ren) is voluntarily participating in this event, and I am aware that due to the nature
-                                of the activity there is a certain amount of risk involved in this activity and my child(ren)
-                                could become injured or ill.</li>
+                                <li>My child(ren) is voluntarily participating in this event, and I am aware that due to the
+                                    nature of the activity there is a certain amount of risk involved in this activity and
+                                    my child(ren) could become injured or ill.
+                                </li>
 
-                            <li>I understand that I/my child will not be covered by any program insurance, and I agree that I
-                                will not hold the team, program, coach, in­structor, or any organization associate with the
-                                camp responsible for injuries received while participating in the above noted program.
-                            </li>
+                                <li>I understand that I/my child will not be covered by any program insurance, and I agree that
+                                    I will not hold the team, program, coach, in­structor, or any organization associate
+                                    with the camp responsible for injuries received while participating in the above noted
+                                    program.
+                                </li>
 
-                            <li>I understand that there may be occasions when MCC will want to use photographs or audio or video
-                                recordings from Church activities or events in which I or my minor child participates. I
-                                grant to MCC the right to include photographic, video, audio and other visual or audio portrayals
-                                of me or my minor child taken during or in connection with this Basketball Camp in any medium
-                                of any nature what­soever (including the right to edit, combine with other materials or create
-                                any type of derivative thereof) for the purpose of advertising, publicity, promotions, or
-                                otherwise, without compensation to me or my child. Such grant shall include the unrestricted
-                                right to copy, revise, distribute, and display photographs, images, films, tapes, drawings
-                                or recordings in any type of media (including, but not limited to, the Internet). I consent
-                                to the use by MCC of my or my minor child’s testimonial, comments and/or narrative writing
-                                in any manner, free of charge, in any form or media. I understand the wording of any testimonial,
-                                comments and/or narrative writing may be edited or altered, provided that the sense and meaning
-                                are not materially changed. I agree that all rights, title and interest therein shall be
-                                MCC’s sole property, free from any claims by me or my child or any person deriving any rights
-                                or interest from me or my child. I release MCC and its agents and assigns from any and all
-                                claims which may arise out of or are in any way connected with such use.</li>
-                        </ul>
+                                <li>I understand that there may be occasions when MCC will want to use photographs or audio or
+                                    video recordings from Church activities or events in which I or my minor child participates.
+                                    I grant to MCC the right to include photographic, video, audio and other visual or audio
+                                    portrayals of me or my minor child taken during or in connection with this Basketball
+                                    Camp in any medium of any nature what­soever (including the right to edit, combine with
+                                    other materials or create any type of derivative thereof) for the purpose of advertising,
+                                    publicity, promotions, or otherwise, without compensation to me or my child. Such grant
+                                    shall include the unrestricted right to copy, revise, distribute, and display photographs,
+                                    images, films, tapes, drawings or recordings in any type of media (including, but not
+                                    limited to, the Internet). I consent to the use by MCC of my or my minor child’s testimonial,
+                                    comments and/or narrative writing in any manner, free of charge, in any form or media.
+                                    I understand the wording of any testimonial, comments and/or narrative writing may be
+                                    edited or altered, provided that the sense and meaning are not materially changed. I
+                                    agree that all rights, title and interest therein shall be MCC’s sole property, free
+                                    from any claims by me or my child or any person deriving any rights or interest from
+                                    me or my child. I release MCC and its agents and assigns from any and all claims which
+                                    may arise out of or are in any way connected with such use.
+                                </li>
+                            </ul>
+                        </div>
+                        <br/>
+                        <div style="" class="form-group">
+                            <input type="checkbox" name="liability" value="“I have read and agree to the Liability, Medical,
+                    & Photo Release." id="liability" role="checkbox" class="q-checkbox required">
+                            <span class="choice-label">I have read and agree to the Liability, Medical, & Photo Release.</span>
+                            <label class="error" for="liability"></label>
+                            <br/><a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/LiabilityMedicalPhotoRelease.pdf">Click here to print the Liability, Medical, & Photo Release form.</a>
+                        </div>
+                        <br/>
+                        <div class="item navigate">
+                            <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default">
+                        </div>
                     </div>
-                    <br/>
-                    <div style="" class="form-group">
-                        <input type="checkbox" name="liability" value="“I have read and agree to the Liability, Medical, & Photo Release." id="liability"
-                        role="checkbox" class="q-checkbox required">
-                        <span class="choice-label">I have read and agree to the Liability, Medical, & Photo Release.</span>
-                        <label class="error" for="liability"></label>
-                        <br/><a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/LiabilityMedicalPhotoRelease.pdf">Click here to print the Liability, Medical, & Photo Release form.</a>
-                    </div>
-                    <br/>
-                    <div class="item navigate">
-                        <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()">
-                    </div>
-
             </fieldset>
         </form>
 
@@ -767,6 +750,7 @@
         <!-- Include all compiled plugins (below), or include individual files as needed -->
         <script src="js/bootstrap.min.js"></script>
         <script type="text/javascript" src="jquery.validate.min.js"></script>
+        <script type="text/javascript" src="jquery.maskedinput.min.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,45 @@
+div.alert-message 
+{
+    color:Red;
+    font-size:small;
+}
+div.error-message {
+    font-size:x-small;
+    color:Red;
+}
+div.errorbox-bad {
+  background-color: #f7f7f7;
+}
+h2.section-title {
+  background-color: transparent;
+}
+
+div.secondary-text 
+{
+    font-size:x-small;
+    color:Navy;
+}
+div.error-message 
+{
+    display:none;
+    color:Red;
+    font-size:small;
+}
+.error 
+{
+    color:red;
+    font-size:x-small;
+    /*display:inline;*/
+}
+.hidden {display:none;}
+
+table.schedule, .schedule th,.schedule td {
+    border: 1px solid gray;
+    border-collapse:  collapse;
+}
+.schedule th, .schedule td {
+    padding: 5px;
+    width:135px;
+}
+th.label, td.label {text-align:left; font-weight:bold;width:150px;color:black;}
+td.data {text-align:center}

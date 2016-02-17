@@ -201,10 +201,6 @@
                         $('#entry_196476760').val('Yes');
                     }
 					
-                    if ($('#liability:checkbox:checked').length > 0) {
-                        $('#entry_1420925338').val('Yes');
-                    }
-					
                     $('#submit').click();
                     $('#entryForm').hide();
                     $('.childField').val('');
@@ -637,40 +633,39 @@
         <form id="submitForm" action="https://docs.google.com/forms/d/12YqZ3TC5UL9FEf9_XEO_Gq-c0ImMIdbvL3mbc7hUcLk/formResponse"
         method="post" target="hidden_iframe" onsubmit="submitted=true;">
             <div id="submitFormFields" class="hidden">
-                Child First Name:
-                <input type="text" name="entry.468125125" id="entry_468125125" value="" value="" /> Child Last Name:
-                <input type="text" name="entry.475256130" value="" id="entry_475256130" /> Grade:
-                <input type="text" name="entry.1791211207" id="entry_1791211207" value="" /> Gender:
-                <input type="text" name="entry.1949776303" id="entry_1949776303" value="" /> Shirt Size:
-                <input type="text" name="entry.724904151" id="entry_724904151" value="" /> Skill Level:
-                <input type="text" name="entry.63752483" id="entry_63752483" value="" /> Medical:
-                <input type="text" name="entry.1654300607" id="entry_1654300607" value="" /> Location:
-                <input type="text" name="entry.1938819117" id="entry_1938819117" value="" /> Parent First Name:
-                <input type="text" name="entry_1906782859" id="entry_1906782859" value="" /> Parent Last Name:
-                <input type="text" name="entry_474647137" id="entry_474647137" value="" /> Child Lives With
-                <input type="text" name="entry_903779928" id="entry_903779928" value="" /> Address:
-                <input type="text" name="entry_1402976333" id="entry_1402976333" value="" /> City:
-                <input type="text" name="entry_1315311435" id="entry_1315311435" value="" /> State:
-                <input type="text" name="entry_215338488" id="entry_215338488" value="" /> Zip:
-                <input type="text" name="entry_1317122726" id="entry_1317122726" value="" /> Home Phone:
-                <input type="text" name="entry_1526387338" id="entry_1526387338" value="" /> Cell Phone:
-                <input type="text" name="entry_512266806" id="entry_512266806" value="" /> Email:
-                <input type="text" name="entry_2062229120" id="entry_2062229120" value="" /> Emergencey Contact
-                <input type="text" name="entry_2048136904" id="entry_2048136904" value="" /> Emergency Phone
-                <input type="text" name="entry_1254374332" id="entry_1254374332" value="" /> Emergency Person Relationship to Child
-                <input type="text" name="entry_580467603" id="entry_580467603" value="" /> Comments
-                <input type="text" name="entry_1242629666" id="entry_1242629666" value="" /> Volunteer:
-                <input type="text" name="entry_196476760" id="entry_196476760" value="" /> Paid
-                <input type="text" name="entry_836064026" id="entry_836064026" value="" /> Liability
-                <input type="text" name="entry_1420925338" id="entry_1420925338" value="" /> Session
-                <input type="text" name="entry_1481928124" id="entry_1481928124" /> Day 1
-                <input type="text" name="entry_1201960342" id="entry_1201960342" value="" /> Day 2
-                <input type="text" name="entry_918437581" id="entry_918437581" value="" /> Day 3
-                <input type="text" name="entry_406918706" id="entry_406918706" value="" /> Day 4
-                <input type="text" name="entry_1744989806" id="entry_1744989806" value="" /> Day 5
-                <input type="text" name="entry_774317920" id="entry_774317920" value="" /> Total
-                <input type="text" name="entry_543684174" id="entry_543684174" value="" /> Awards
-                <input type="text" name="entry_1555206858" id="entry_1555206858" value="" />
+                <input type="text" name="entry_468125125" id="entry_468125125" value="" /> Child First Name:
+                <input type="text" name="entry_475256130" id="entry_475256130" value="" /> Child Last Name:
+                <input type="text" name="entry_1791211207" id="entry_1791211207" value="" /> Grade:
+                <input type="text" name="entry_1949776303" id="entry_1949776303" value="" /> Gender:
+                <input type="text" name="entry_724904151" id="entry_724904151" value="" /> Shirt Size:
+                <input type="text" name="entry_63752483" id="entry_63752483" value="" /> Skill Level:
+                <input type="text" name="entry_1654300607" id="entry_1654300607" value="" /> Medical:
+                <input type="text" name="entry_1938819117" id="entry_1938819117" value="" /> Location:
+                <input type="text" name="entry_1906782859" id="entry_1906782859" value="" /> Parent First Name:
+                <input type="text" name="entry_474647137" id="entry_474647137" value="" /> Parent Last Name:
+                <input type="text" name="entry_903779928" id="entry_903779928" value="" /> Child Lives With:
+                <input type="text" name="entry_1402976333" id="entry_1402976333" value="" /> Address 
+                <input type="text" name="entry_1315311435" id="entry_1315311435" value="" /> City:
+                <input type="text" name="entry_215338488" id="entry_215338488" value="" /> State:
+                <input type="text" name="entry_1317122726" id="entry_1317122726" value="" /> Zip:
+                <input type="text" name="entry_1526387338" id="entry_1526387338" value="" /> Home Phone:
+                <input type="text" name="entry_512266806" id="entry_512266806" value="" /> Cell Phone:
+                <input type="text" name="entry_2062229120" id="entry_2062229120" value="" /> Email:
+                <input type="text" name="entry_2048136904" id="entry_2048136904" value="" /> Emergencey Contact
+                <input type="text" name="entry_1254374332" id="entry_1254374332" value="" /> Emergency Phone
+                <input type="text" name="entry_580467603" id="entry_580467603" value="" /> Emergency Person Relationship to Child
+                <input type="text" name="entry_1242629666" id="entry_1242629666" value="" /> Comments
+                <input type="text" name="entry_196476760" id="entry_196476760" value="" /> Volunteer:
+                <input type="text" name="entry_836064026" id="entry_836064026" value="" /> Paid
+                <input type="text" name="entry_1420925338" id="entry_1420925338" value="" /> Liability
+                <input type="text" name="entry_1481928124" id="entry_1481928124" /> Session
+                <input type="text" name="entry_1201960342" id="entry_1201960342" value="" /> Day 1
+                <input type="text" name="entry_918437581" id="entry_918437581" value="" /> Day 2
+                <input type="text" name="entry_406918706" id="entry_406918706" value="" /> Day 3
+                <input type="text" name="entry_1744989806" id="entry_1744989806" value="" /> Day 4
+                <input type="text" name="entry_774317920" id="entry_774317920" value="" /> Day 5
+                <input type="text" name="entry_543684174" id="entry_543684174" value="" /> Total
+                <input type="text" name="entry_1555206858" id="entry_1555206858" value="" />Awards
 
                 <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
             </div>

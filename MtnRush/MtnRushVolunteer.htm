@@ -1,0 +1,388 @@
+﻿
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=9; chrome=1;">
+    <meta name="fragment" content="!">
+    <base target="_blank">
+    <title>Mountain Hoops Volunteer Entry Form</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#entryForm").validate();
+        });
+
+        function setphone(fieldset) {
+            var setField = false;
+            for (i = 1; i < 4; i++) {
+                fieldobj = $('#' + fieldset + i);
+                if ($(fieldobj).val() == '' || $(fieldobj).val().length != $(fieldobj).attr('maxLength')) { setField = false; $('#' + fieldset).val(''); i = 4; } else { setField = true; }
+            }
+            if (setField) { $('#' + fieldset).val($('#' + fieldset + '1').val() + $('#' + fieldset + '2').val() + $('#' + fieldset + '3').val()) }
+        }
+        function autotab(origField, destField) {
+            if (origField.getAttribute && origField.value.length == origField.getAttribute("maxlength")) { destField.focus(); }
+        }
+
+        function togglephone(obj) {
+            if (obj.value=="Yes") 
+            {
+                $('#' + obj.name.replace('_check','')+'_div').show();
+            }
+            else
+            {
+                $('#' + obj.name.replace('_check', '') + '_div').hide();
+            }
+        }
+
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function toProperCase(str) { return str.replace(/\b([a-z])/g, function (_, initial) { return initial.toUpperCase(); }); }
+
+        function checkemail(obj) {
+            if (obj.value == 'Yes') {
+                $('#' + obj.name + '_div').show();
+                $('#' + obj.name + '_1').val('');
+                $('#' + obj.name + '_2').val('');
+            }
+            else {
+                $('#' + obj.name + '_div').hide();
+                $('#' + obj.name + '_1').val('sorry@noemail.com');
+                $('#' + obj.name + '_2').val('sorry@noemail.com');
+            }
+        }
+        function postToGoogle() {
+            try {
+                $('#registeredName').html($('#fname').val());
+                window.scrollTo(0, 0);
+                if ($('#entryForm').valid()) {
+                    $('.entryField').each(function () {
+                        $('#gform_' + this.id).val(this.value);
+                    });
+					$('#submit').click();
+                    $('#entryForm').hide();
+                    $('.childField').val('');
+                    $('#submitFormFields').find('input:text').val('');
+                    $('#confirmationForm').show();
+                }
+                else {
+                    alert('Please fill out all required fields.\n\nThank You.');
+                }
+            }
+            catch (e) { alert("Page Error: " + e) }
+        }
+    </script>
+    <script type="text/javascript"></script>
+</head>
+<body>
+    <script type="text/javascript">var submitted = false;</script>
+    <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
+    <div id="confirmationForm" class="hidden">
+         <br />
+        Thank you <span id="registeredName"></span> for volunteering for the Mountain Rush Football Camp.
+        <br /><br />Here are a few reminders and important things to know about the camp:
+        <ul>
+			<li><strong>Dates & Times</strong>: Friday, July 24, 6-8:30pm & Saturday, July 25, 9am-1pm</li>
+			<li><strong>Location</strong>: Edgewood Recreation Park (Cunion Field), Trimble Rd, Edgewood</li>
+			<li><strong>Check-in</strong>: If possible, please arrive <strong>15 minutes early</strong></li>
+            <li><strong>Background Check Form</strong>: If you have not already filled it out, the form can be accessed and printed <a href="https://googledrive.com/host/0B9xhUVvBSYP-VEFLOU5YZ1NEVDA/BackgroundCheck.pdf">HERE</a>.</li>
+        </ul>
+        <br /><br />
+        It’s going to be a great camp and we’re really looking forward to it.  If you have any questions, please contact the Camp Director, Luke Erickson, at <a href="mailto:Luke@MountainCC.org?subject=Mountain%20Hoops%20Camp" target="_top">Luke@MountainCC.org</a>. 
+        <br /><br/>See you soon!
+        <br />
+        Luke Erickson
+        <br /><br />
+    </div>
+
+    <form id="entryForm" action="?">
+        <!--<fieldset>-->
+ 			<table style="width:560px;border:none;">
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="fname">
+                                * First Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="required childField entryField" id="fname" title="First name is required">
+                            <input style="display:none;" type="button" value="test" onclick="$('[name=\'fname_post\']').val($('#fname').val());"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="lname">
+                                * Last Name
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="required childField entryField" id="lname" dir="ltr" title="Last Name is required">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <div class="form-entry">
+                            <label class="q-item-label" for="shirtSize">
+                                * T-Shirt Size
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <select class="required childField entryField" name="shirtSize" id="shirtSize" title="T-Shirt Size is required">
+                                <option value=""></option>
+                                <option value="AS">Adult S</option>
+                                <option value="AM">Adult M</option>
+                                <option value="AL">Adult L</option>
+                                <option value="AXL">Adult XL</option>
+								<option value="AXL">Adult XXL</option>
+								<option value="AXL">Adult XXXL</option>
+                            </select>
+                        </div>
+                    </td>
+                </tr>    
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="address">
+                                * Address
+                            </label>
+                            <input type="text" name="address" value="" class="required entryField" id="address" dir="ltr" title="Address is required">
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="city">
+                                * City
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" name="city" value="" class="required entryField" id="city" dir="ltr" title="City is required">
+                        </div>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="state">
+                                * State
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <input type="text" style="display:none" name="stateInput" value="" dir="ltr" title="State">
+                            <select name="state" id="state" class="required entryField">
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD" selected>Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="zip">
+                                * Zip Code
+                            </label>
+                            <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="required digits" id="zip" dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-entry">
+                            <label class="q-item-label" for="textCheck">
+                                * Do you have a mobile phone that can receive text messages?
+                            </label>
+                            <div class="secondary-text" dir="ltr">We may communicate using text messages.  If you do not text, check "No"</div>
+                            <input class="required helperField" type="radio" name="phone1_check" value="Yes" onclick="togglephone(this)" title="Valid mobile phone is required." />Yes
+                            <input class="helperField" type="radio" name="phone1_check" value="No" onclick="togglephone(this)" title="Valid mobile phone is required." />No
+                            <label class="error" for="phone1_check"></label>
+                        </div>
+
+                        <div id="phone1_div" class="form-entry" style="display:none">
+                            <label class="q-item-label" for="cellphone1">
+                                * Mobile/Texting Phone
+                            </label>
+                            <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
+                            <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))" maxlength=3>-
+                            <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
+                            <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone" maxlength="10" minlength="10" class="required digits entryField" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone." />
+                        </div>
+
+                        <div class="form-entry">
+                            <label class="q-item-label" for="textCheck">
+                                * Do you have a home phone or other phone number that we can reach you if necessary?
+                            </label>
+                            <input class="required helperField" type="radio" name="phone2_check" value="Yes" onclick="togglephone(this)" title="Valid mobile phone is required." />Yes
+                            <input class="helperField" type="radio" name="phone2_check" value="No" onclick="togglephone(this)" title="Valid mobile phone is required." />No
+                            <label class="error" for="phone2_check"></label>
+                        </div>
+
+                            <div id="phone2_div" class="form-entry" style="display:none">
+                                <label class="q-item-label" for="homephone1">
+                                    * Home/Other Phone
+                                </label>
+                                <input class="helperField" type="text" id="homephone1" size=3 onkeyup="autotab(this, $('#homephone2'))" maxlength=3 onblur="setphone('homephone')">-
+                                <input class="helperField" onblur="setphone('homephone')" type="text" id="homephone2" size="3" onkeyup=" autotab(this, $('#homephone3'))" maxlength=3>-
+                                <input class="helperField" type="text" id="homephone3" size=4 maxlength=4 onblur="setphone('homephone')">
+                                <input name="homephone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="homephone" maxlength="10" minlength="10" class="required digits helperField entryField" readonly tabindex="-1" title="Home phone is required.  If cell only, use cell phone." />
+                            </div>
+                        
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td colspan="2">
+                        <div class="form-entry">
+                            <label class="q-item-label" for="emailCheck">
+                                * Do you have a valid Email Address?
+                            </label>
+                            <div class="secondary-text" dir="ltr">We will communicate important information using email.  If you do not use email, check "No"</div>
+                            <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required." />Yes
+                            <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required." />No
+                            <label class="error" for="email"></label>
+                        </div>
+                    </td>
+                </tr>
+                <tr id="email_div" style="display:none">
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="email_1">
+                                * Email Address
+                            </label>
+                            <input class="helperField required entryField" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                        </div>
+
+                    </td>
+                    <td>
+                        <div class="form-entry">
+                            <label class="q-item-label" for="email_2">
+                                * Email Address Check
+                            </label>
+                            <input class="helperField required entryField" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr" title="Email must match email address to the left.">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <div class="form-entry">
+                            <label class="q-item-label" for="comments">
+                                Comments/Requests
+                            </label>
+                            <div class="secondary-text" dir="ltr"></div>
+                            <textarea class="entryField" name="comments" rows="4" cols="60" class="q-long" id="comments" dir="ltr" title="Comments/Requests  "></textarea>
+
+                        </div>
+                    </td>
+
+                </tr>
+                <tr>
+					<td>
+				        <div class="item navigate">
+							<input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()">
+						</div>
+					</td>
+                </tr>
+
+            </table>
+
+
+
+
+        <!--</fieldset>-->
+        </form>
+    <form id="submitForm" action="https://docs.google.com/forms/d/1PhgxdeDSGItM_21iq6iHQzpvV7sgnPHTAWdT_dXo0vY/formResponse" method="post" target="hidden_iframe" onsubmit="submitted=true;">
+        <div id="submitFormFields" class="hidden">
+            First Name:
+            <input type="text" name="entry.615552524" id="gform_fname" value="" />
+            Last Name:
+            <input type="text" name="entry.136178242" id="gform_lname" value=""/>
+            Shirt Size:
+            <input type="text" name="entry.1912992006" id="gform_shirtSize" value="" />
+            Home Phone:
+            <input type="text" name="entry.1658025071" id="gform_homephone" value="" />
+            Cell Phone:
+            <input type="text" name="entry.231468034" id="gform_cellphone" value="" />
+            Email:
+            <input type="text" name="entry.1338981496" id="gform_email_1" value="" />
+            Volunteer position:
+            <input type="text" name="entry.2084099868" id="gform_position" value="" />
+            Location:
+            <input type="text" name="entry.1121179658" id="gform_location" value="" />
+            Address:
+            <input type="text" name="entry.583868171" id="gform_address" value="" />
+            City:
+            <input type="text" name="entry.343510714" id="gform_city" value="" />
+            State:
+            <input type="text" name="entry.242907071" id="gform_state" value="" />
+            Zip:
+            <input type="text" name="entry.197065243" id="gform_zip" value="" />
+            
+            Comments
+            <input type="text" name="entry.397502062" id="gform_comments" value="" />
+
+            Background Check Done
+            <input type="text" name="entry.991661893" id="gform_background" value="" />
+
+            <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
+        </div>
+    </form>
+ 
+</body>
+</html>

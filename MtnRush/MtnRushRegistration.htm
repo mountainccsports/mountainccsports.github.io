@@ -1,0 +1,459 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mountain Rush Camp Entry Form</title>
+    <link href="style.2016.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#entryForm").validate();
+
+			 /* Phone number mask START*/
+            $(".phonemask").mask("999-999-9999");
+            
+            $(".phonemask").on("blur", function() {
+                var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+                
+                if( last.length == 3 ) {
+                    var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+                    var lastfour = move + last;
+                    
+                    var first = $(this).val().substr( 0, 9 );
+                    
+                    $(this).val( first + '-' + lastfour );
+                }
+            });
+            /* Phone number mask END*/
+			
+        });
+    
+    
+        function autotab(origField, destField) {
+            if (origField.getAttribute && origField.value.length == origField.getAttribute("maxlength")) { destField.focus(); }
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
+        function toProperCase(str) { return str.replace(/\b([a-z])/g, function (_, initial) { return initial.toUpperCase(); }); }
+
+        function checkemail(obj) {
+            if (obj.value == 'Yes') {
+                $('#' + obj.name + '_div').show();
+                $('#' + obj.name + '_1').val('');
+                $('#' + obj.name + '_2').val('');
+            }
+            else {
+                $('#' + obj.name + '_div').hide();
+                $('#' + obj.name + '_1').val('sorry@noemail.com');
+                $('#' + obj.name + '_2').val('sorry@noemail.com');
+            }
+        }
+		
+
+        function postToGoogle() {
+            try {
+
+                window.scrollTo(0, 0);
+                if ($('#entryForm').valid()) {
+                    $('#entry_2062229120').val($('#email_1').val());
+                    $('#entry_1526387338').val($('#homephone').val());
+                    $('#entry_512266806').val($('#cellphone').val());
+                    if ($('#contactphone').val() != '') { $('#entry_1254374332').val($('#contactphone').val()); }
+
+                    //may not need this
+                    $('.helperField').remove();
+
+                    $('#submit').click();
+                }
+                else {
+                    alert('Please fill out all required fields.\n\nThank You.');
+                }
+
+            }
+            catch (e) { alert("Page Error: " + e) }
+        }
+    </script>
+</head>
+
+<body>
+    <div id="header" style="background-color:#000000;">
+        <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
+        <img height="96" style="margin:0px;position:absolute;top:-12px;right:15px" alt="" src="img/RushLogo.png">
+    </div>
+    <div id="header" style="background-color:#9BBB3D;color:#000000;text-align:center;font-weight:bold;">
+        Mountain Rush Registration
+    </div>
+
+    <div class="container">
+        <script type="text/javascript">
+            var submitted = false;
+        </script>
+        <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location = 'MtnRushConfirmation.htm'; }"></iframe>
+        <form id="entryForm" action="https://docs.google.com/forms/d/1vCvFVFu6aAGz3qw1o_9ACRbhmw8MBHqOGYIyYQpySkk/formResponse" method="post"
+        target="hidden_iframe" onsubmit="submitted=true;">
+
+            <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_468125125">
+                        * Child&#39;s First Name
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <input type="text" name="entry.468125125" value="" onchange="this.value=toProperCase(this.value)" class="form-control required"
+                    id="entry_468125125" title="Child&#39;s first name is required">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <div class="form-entry">
+                        <label class="q-item-label" for="entry_475256130">
+                            * Child&#39;s Last Name
+                        </label>
+                        <div class="secondary-text" dir="ltr"></div>
+                        <input type="text" name="entry.475256130" value="" onchange="this.value=toProperCase(this.value)" class="form-control required"
+                        id="entry_475256130" dir="auto" title="Child&#39;s Last Name is required">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_1791211207">
+                        * Child&#39;s Grade (as of fall 2016)
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <select name="entry.1791211207" id="entry_1791211207" class="form-control required" title="Child&#39;s grade is required">
+                        <option value=""></option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_724904151">
+                        * T-Shirt Size
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <select class="required form-control" name="entry.724904151" id="entry_724904151" title="T-Shirt Size is required">
+                        <option value=""></option>
+                        <option value="Youth S">Youth S</option>
+                        <option value="Youth M">Youth M</option>
+                        <option value="Youth L">Youth L</option>
+                        <option value="Youth XL">Youth XL</option>
+                        <option value="Adult S">Adult S</option>
+                        <option value="Adult M">Adult M</option>
+                        <option value="Adult L">Adult L</option>
+                        <option value="Adult XL">Adult XL</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_358846444">
+                        Football Postion
+                    </label>
+                    <small class="text-muted">(Example: QB, WR, DL)</small>
+                    <input class="form-control" type="text" name="entry.358846444" value="" id="entry_358846444" dir="auto" title="Football Postion Example: QB, WR, DL">
+                </div>
+                <div class="col-xs-6 form-group">
+
+                    <label class="q-item-label" for="entry_63752483">
+                        Years experience playing football
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <select class="form-control" name="entry.63752483" id="entry_63752483" title="Years experience playing football">
+                        <option value=""></option>
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                    </select>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_1906782859">
+                        * Parent/Guardian First Name
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <input type="text" name="entry.1906782859" value="" onchange="this.value=toProperCase(this.value)" class="required form-control"
+                    id="entry_1906782859" dir="auto" title="Parent/Guardian First Name is required">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <div class="form-entry">
+                        <label class="q-item-label" for="entry_474647137">
+                            * Parent/Guardian Last Name
+                        </label>
+                        <div class="secondary-text" dir="ltr"></div>
+                        <input type="text" name="entry.474647137" value="" class="required form-control" onchange="this.value=toProperCase(this.value)"
+                        id="entry_474647137" dir="auto" title="Parent/Guardian Last Name is required">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_903779928">
+                        * Child Lives with
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <select class="required form-control" name="entry.903779928" id="entry_903779928" title="Child Lives with is required">
+                        <option value=""></option>
+                        <option value="Mother">Mother</option>
+                        <option value="Father">Father</option>
+                        <option value="Both">Both</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <div class="form-entry">
+                        <label class="q-item-label" for="entry_1654300607">
+                            Child Medical Conditions/Allergies
+                        </label>
+                        <div class="secondary-text" dir="ltr"></div>
+                        <input type="text" name="entry.1654300607" value="" class="form-control" id="entry_1654300607" dir="auto" title="Medical Conditions/Allergies">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_1402976333">
+                        * Address
+                    </label>
+                    <input type="text" name="entry.1402976333" value="" class="required form-control" id="entry_1402976333" dir="auto" title="Address is required">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <div class="form-entry">
+                        <label class="q-item-label" for="entry_1315311435">
+                            * City
+                        </label>
+                        <div class="secondary-text" dir="ltr"></div>
+                        <input type="text" name="entry.1315311435" value="" class="required form-control" id="entry_1315311435" dir="auto" title="City is required">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_215338488">
+                        * State
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <input type="text" style="display:none" name="entry.215338488" value="" dir="auto" title="State  " title="">
+                    <select name="entry.215338488" id="entry_215338488" class="required form-control">
+                        <option value="AL">Alabama</option>
+                        <option value="AK">Alaska</option>
+                        <option value="AZ">Arizona</option>
+                        <option value="AR">Arkansas</option>
+                        <option value="CA">California</option>
+                        <option value="CO">Colorado</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="DE">Delaware</option>
+                        <option value="DC">District Of Columbia</option>
+                        <option value="FL">Florida</option>
+                        <option value="GA">Georgia</option>
+                        <option value="HI">Hawaii</option>
+                        <option value="ID">Idaho</option>
+                        <option value="IL">Illinois</option>
+                        <option value="IN">Indiana</option>
+                        <option value="IA">Iowa</option>
+                        <option value="KS">Kansas</option>
+                        <option value="KY">Kentucky</option>
+                        <option value="LA">Louisiana</option>
+                        <option value="ME">Maine</option>
+                        <option value="MD" selected>Maryland</option>
+                        <option value="MA">Massachusetts</option>
+                        <option value="MI">Michigan</option>
+                        <option value="MN">Minnesota</option>
+                        <option value="MS">Mississippi</option>
+                        <option value="MO">Missouri</option>
+                        <option value="MT">Montana</option>
+                        <option value="NE">Nebraska</option>
+                        <option value="NV">Nevada</option>
+                        <option value="NH">New Hampshire</option>
+                        <option value="NJ">New Jersey</option>
+                        <option value="NM">New Mexico</option>
+                        <option value="NY">New York</option>
+                        <option value="NC">North Carolina</option>
+                        <option value="ND">North Dakota</option>
+                        <option value="OH">Ohio</option>
+                        <option value="OK">Oklahoma</option>
+                        <option value="OR">Oregon</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="RI">Rhode Island</option>
+                        <option value="SC">South Carolina</option>
+                        <option value="SD">South Dakota</option>
+                        <option value="TN">Tennessee</option>
+                        <option value="TX">Texas</option>
+                        <option value="UT">Utah</option>
+                        <option value="VT">Vermont</option>
+                        <option value="VA">Virginia</option>
+                        <option value="WA">Washington</option>
+                        <option value="WV">West Virginia</option>
+                        <option value="WI">Wisconsin</option>
+                        <option value="WY">Wyoming</option>
+                    </select>
+                </div>
+                <div class="col-xs-6 form-group">
+
+                    <label class="q-item-label" for="entry_1317122726">
+                        * Zip Code
+                    </label>
+                    <input type="text" size="6" maxlength="5" minlength="5" name="entry.1317122726" value="" class="form-control required digits"
+                    id="entry_1317122726" dir="auto" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label for="homephone">
+                        * Home Phone
+                    </label>
+                    <small class="text-muted">
+								If you only have a cell phone, use cell phone
+								<!--<div class="secondary-text" dir="ltr"></div>-->
+							 </small>
+                    <input name="homephone" id="homephone" maxlength="12" minlength="12" class="phonemask form-control required" type="tel" title="Home phone is required. If cell only, use cell phone."
+                    />
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="cellphone">
+                        * Cell Phone
+                    </label>
+                    <small class="text-muted">
+                                If you only have a home phone, input home phone here as well.
+                            </small>
+                    <input name="cellphone" id="cellphone" maxlength="12" minlength="12" class="form-control required phonemask" type="tel" title="Cell Phone is required. If none, use home phone."
+                    />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <label for="emailCheck">
+                        * Do you have a valid Email Address?
+                    </label>
+                    <small class="text-muted">
+                            We will communicate important information using email. If you do not use email, check "No"
+                         </small>
+                    <br/>
+                    <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
+                    />Yes
+                    <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."
+                    />No
+                    <label class="error" for="email"></label>
+                </div>
+
+            </div>
+            <div class="row" id="email_div" style="display:none">
+                <div class="col-xs-6 form-group">
+                    <label for="email_1">
+                        * Email Address
+                    </label>
+                    <input class="helperField required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                </div>
+
+                <div class="col-xs-6 form-group">
+                    <label for="email_2">
+                        * Email Address Check
+                    </label>
+                    <small class="text-muted">
+                            Please enter your address again to confirm it is correct.
+                         </small>
+                    <input class="helperField required form-control" type="email" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
+                    title="Email must match email address to the left.">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_2048136904">
+                        Emergency Contact Person
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <input type="text" name="entry.2048136904" value="" class="form-control" id="entry_2048136904" dir="auto" title="Emergency Contact Person">
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label class="" for="emergencyPhone">
+                        Emergency Contact Phone
+                    </label>
+                    <input class="helperField form-control phonemask" id="contactphone" maxlength="12" minlength="12" type="tel" />
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_580467603">
+                        Emergency Contact&#39;s Relationship to Child
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <input type="text" name="entry.580467603" value="" class="form-control" id="entry_580467603" dir="auto" title="Emergency Contact&#39;s Relationship to Child  ">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <label class="q-item-label" for="entry_1242629666">
+                        Comments/Requests
+                    </label>
+                    <div class="secondary-text" dir="ltr"></div>
+                    <textarea name="entry.1242629666" rows="4" cols="60" class="form-control" id="entry_1242629666" dir="auto" title="Comments/Requests  "></textarea>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <label for="volunteer">
+                        Check the box below if you would like to serve as a volunteer for the camp
+                    </label>
+                    <br/>
+                    <input type="checkbox" name="entry.1121335528" value="" id="entry_1121335528" role="checkbox" class="">
+                    <span class="choice-label">Yes, I would like to help, please contact me.</span>
+
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <div class="item navigate">
+                        <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
+                        <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default">
+                    </div>
+                </div>
+            </div>
+
+            <div class="hidden">
+                <input name="entry.2062229120" id="entry_2062229120" value="" />
+                <input name="entry.1526387338" id="entry_1526387338" value="" />
+                <input name="entry.512266806" id="entry_512266806" value="" />
+                <input name="entry.1254374332" id="entry_1254374332" value="" />
+            </div>
+        </form>
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+    <script type="text/javascript" src="jquery.maskedinput.min.js"></script>
+</body>
+
+</html>

@@ -13,10 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
 
-    <script type="text/javascript">
-        //prevent hitting back button and resubmitting the page
-        window.history.forward();
-        
+    <script type="text/javascript">        
         $(document).ready(function () {
             $("#entryForm").validate();
 
@@ -74,11 +71,15 @@
                     $('#entry_1526387338').val($('#homephone').val());
                     $('#entry_512266806').val($('#cellphone').val());
                     if ($('#contactphone').val() != '') { $('#entry_1254374332').val($('#contactphone').val()); }
-
+                    
+                    if ($('#volunteer:checkbox:checked').length > 0) {
+                        $('#entry_196476760').val('Yes');
+                    }
+                    
                     $('#submit').click();
                     
-                     //may not need this
-                    //$('.helperField').remove();
+                    //erase some of the fields
+                    $('.helperField').remove();
                 }
                 else {
                     alert('Please fill out all required fields.\n\nThank You.');
@@ -428,7 +429,7 @@
                         Check the box below if you would like to serve as a volunteer for the camp
                     </label>
                     <br/>
-                    <input type="checkbox" name="entry.196476760" value="" id="entry_196476760" role="checkbox" class="">
+                    <input type="checkbox" name="volunteer" value="" id="volunteer" role="checkbox" class="">
                     <span class="choice-label">Yes, I would like to help, please contact me.</span>
 
                 </div>

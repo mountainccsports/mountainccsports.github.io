@@ -14,6 +14,9 @@
     <script type="text/javascript" src="jquery.min.js"></script>
 
     <script type="text/javascript">
+        //prevent hitting back button and resubmitting the page
+        window.history.forward();
+        
         $(document).ready(function () {
             $("#entryForm").validate();
 
@@ -111,7 +114,7 @@
                         * Child&#39;s First Name
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.468125125" value="" onchange="this.value=toProperCase(this.value)" class="form-control required"
+                    <input type="text" name="entry.468125125" value="" onchange="this.value=toProperCase(this.value)" class="helperField form-control required"
                     id="entry_468125125" title="Child&#39;s first name is required">
                 </div>
                 <div class="col-xs-6 form-group">
@@ -120,7 +123,7 @@
                             * Child&#39;s Last Name
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="entry.475256130" value="" onchange="this.value=toProperCase(this.value)" class="form-control required"
+                        <input type="text" name="entry.475256130" value="" onchange="this.value=toProperCase(this.value)" class="helperField form-control required"
                         id="entry_475256130" dir="auto" title="Child&#39;s Last Name is required">
                     </div>
                 </div>
@@ -392,7 +395,7 @@
                         Emergency Contact Person
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.2048136904" value="" class="form-control" id="entry_2048136904" dir="auto" title="Emergency Contact Person">
+                    <input type="text" name="entry.2048136904" value="" class="helperField form-control" id="entry_2048136904" dir="auto" title="Emergency Contact Person">
                 </div>
                 <div class="col-xs-6 form-group">
                     <label class="" for="emergencyPhone">
@@ -409,7 +412,7 @@
                         Emergency Contact&#39;s Relationship to Child
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.580467603" value="" class="form-control" id="entry_580467603" dir="auto" title="Emergency Contact&#39;s Relationship to Child  ">
+                    <input type="text" name="entry.580467603" value="" class="helperField form-control" id="entry_580467603" dir="auto" title="Emergency Contact&#39;s Relationship to Child  ">
                 </div>
             </div>
             <div class="row">
@@ -425,7 +428,7 @@
                         Check the box below if you would like to serve as a volunteer for the camp
                     </label>
                     <br/>
-                    <input type="checkbox" name="entry.1121335528" value="" id="entry_1121335528" role="checkbox" class="">
+                    <input type="checkbox" name="entry.196476760" value="" id="entry_196476760" role="checkbox" class="">
                     <span class="choice-label">Yes, I would like to help, please contact me.</span>
 
                 </div>

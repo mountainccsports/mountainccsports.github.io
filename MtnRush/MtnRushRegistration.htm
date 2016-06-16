@@ -13,8 +13,7 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
 
-    <script type="text/javascript">     
-        history.forward(0);	  
+    <script type="text/javascript">      
         $(document).ready(function () {
             //$("#entryForm").validate();
 
@@ -70,19 +69,75 @@
                 //if ($('#entryForm').valid()) {
                     
                   if (1==1) {
-                    $('#entry_2062229120').val($('#email_1').val());
+                    $('#fname').focus();
+                    //Set fields on entryForm
+                    //First Name
+                    $('#entry_468125125').val($('#fname').val());
+                    //Last Name
+                    $('#entry_475256130').val($('#lname').val());
+                    //confirmation name
+                    $('#registeredName').html($('#fname').val() + ' ' + $('#lname').val())
+                    //Grade
+                    $('#entry_1791211207').val($('#grade').val());
+                    //Gender
+                    $('#entry_358846444').val($('#position').val());
+                    //Shirt Size
+                    $('#entry_724904151').val($('#shirtSize').val());
+                    //Skill Level
+                    $('#entry_63752483').val($('#yearsExperience').val());
+                    //Medical
+                    $('#entry_1654300607').val($('#medical').val());
+                    //Parent First Name
+                    $('#entry_1906782859').val($('#parentFName').val());
+                    //Parent Last Name
+                    $('#entry_474647137').val($('#parentLName').val());
+                    //Child Lives With
+                    $('#entry_903779928').val($('#childLivesWith').val());
+                    //Address
+                    $('#entry_1402976333').val($('#address').val());
+                    //City
+                    $('#entry_1315311435').val($('#city').val());
+                    //State
+                    $('#entry_215338488').val($('#state').val());
+                    //Zip
+                    $('#entry_1317122726').val($('#zip').val());
+                    //Home Phone
+                    //$('#entry_1526387338').val($('#homephone1').val() + '-' + $('#homephone2').val() + '-' + $('#homephone3').val());
                     $('#entry_1526387338').val($('#homephone').val());
+                    //Cell Phone
+                    //$('#entry_512266806').val($('#cellphone1').val() + '-' + $('#cellphone2').val() + '-' + $('#cellphone3').val());
                     $('#entry_512266806').val($('#cellphone').val());
-                    if ($('#contactphone').val() != '') { $('#entry_1254374332').val($('#contactphone').val()); }
-                    
+                    //Email
+                    $('#entry_2062229120').val($('#email_1').val());
+                    //Emergency Contact
+                    $('#entry_2048136904').val($('#emergencyContact').val());
+                    //Emergency Phone
+                    if ($('#contactphone').val() != '') {
+                        //$('#entry_1254374332').val($('#emergencyPhone1').val() + '-' + $('#emergencyPhone2').val() + '-' + $('#emergencyPhone3').val());
+                        $('#entry_1254374332').val($('#contactphone').val());
+                    }
+                    //Emergencey Relationship to Child
+                    $('#entry_580467603').val($('#emergencyRelationship').val());
+                    //Comments
+                    $('#entry_1242629666').val($('#comments').val());
+                    //Volunteer:
+
                     if ($('#volunteer:checkbox:checked').length > 0) {
                         $('#entry_196476760').val('Yes');
                     }
-                    
+					
+                    if ($('#liability:checkbox:checked').length > 0) {
+                        $('#entry_1420925338').val('Y');
+                    }
+					
                     $('#submit').click();
-                    
+                    $('#entryForm').hide();
+                    $('.childField').val('');
+                    $('#submitFormFields').find('input:text').val('');
+                    $('#confirmationForm').show();  
+                                  
                     //erase some of the fields
-                    $('.helperField').remove();
+                    //$('.helperField').remove();
                 }
                 else {
                     alert('Please fill out all required fields.\n\nThank You.');
@@ -108,38 +163,66 @@
             var submitted = false;
         </script>
         <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) { window.location = 'MtnRushConfirmation.htm'; }"></iframe>
-        <form id="entryForm" action="https://docs.google.com/forms/d/1vCvFVFu6aAGz3qw1o_9ACRbhmw8MBHqOGYIyYQpySkk/formResponse" method="post"
-        target="hidden_iframe" onsubmit="submitted=true;">
+        <div id="confirmationForm" class="col-xs-12" style="display:none">
+        <br />
+        Thank you for registering your child for the Mountain Rush Football Camp.
+        <br /><br />Here are a few reminders and important things to know about the camp:
+        <ul>
+            <li><strong>Dates & Times</strong>: Friday, July 29, 6-8:30pm & Saturday, July 30, 9am-1pm</li>
+            <li><strong>Location</strong>: Edgewood Recreation Park (Cunion Field), Trimble Rd, Edgewood</li>
+            <li><strong>Check-in</strong>: Please arrive at <strong>5:45pm</strong> on Friday, July 29th to check in</li>
+            <li><strong>Liability, Medical, Photo Release Form</strong>: If you have not already signed and turned in the form, please present a signed form when your child checks in. The form can be accessed and printed <a href="https://googledrive.com/host/0B17z7okOjYDvdG5RZTVwT21WOXc/LiabilityMedicalPhotoRelease.pdf">HERE</a>.</li>
+            <li><strong>Registration Fee</strong>: The $5 camp fee is payable at check-in for those who haven’t paid already.</li>
+            <li>
+                <strong>What to bring</strong>:
+                <ul>
+                    <li>A water bottle with your child’s name on it.</li>
+                    <li>Players are encouraged to wear football cleats if they have them. We will be on grass.</li>
+                    <li>It is likely that sunscreen will be needed on Saturday. Please apply before coming.</li>
+                    <li>Your child does NOT need to bring a football. We will have plenty.</li>
+                </ul>
+            </li>
+            <li><strong>T-shirts</strong>: Camp T-shirts will be given out on Saturday at the conclusion of the camp.</li>
+        </ul>
+        <br /><strong>Volunteer:</strong> We welcome parent involvement in the Camp. If you would like to volunteer, you may sign up <a target="_parent" href="http://www.mountainccsports.org/MtnRush/MtnRushVolunteer.htm">HERE</a>.
+        <br /><br />
+        It’s going to be a great camp to get your child ready for the upcoming football season. We’re really looking forward to it. If you have any questions, please contact the Camp Director, Luke Erickson, at Luke@MountainCC.org. See you soon!
+        <br /><br />
+        Luke Erickson
+        <br /><br />
+        Need to register another child, or want to tell your friends about the camp? <a target="_parent" href="http://www.mountainccsports.org/MtnRush/MtnRushRegistration.htm">Go to this link: </a>
+    </div>
 
+        <form id="entryForm" action="?" role="form">
             <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_468125125">
+                    <label class="q-item-label" for="fname">
                         * Child&#39;s First Name
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.468125125" value="" onchange="this.value=toProperCase(this.value)" class="helperField form-control required"
-                    id="entry_468125125" title="Child&#39;s first name is required">
+                    <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="childField helperField form-control required"
+                    id="fname" title="Child&#39;s first name is required">
                 </div>
                 <div class="col-xs-6 form-group">
                     <div class="form-entry">
-                        <label class="q-item-label" for="entry_475256130">
+                        <label class="q-item-label" for="lname">
                             * Child&#39;s Last Name
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="entry.475256130" value="" onchange="this.value=toProperCase(this.value)" class="helperField form-control required"
-                        id="entry_475256130" dir="auto" title="Child&#39;s Last Name is required">
+                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="childField helperField form-control required"
+                        id="lname" dir="auto" title="Child&#39;s Last Name is required">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_1791211207">
+                    <label class="q-item-label" for="grade">
                         * Child&#39;s Grade (as of fall 2016)
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <select name="entry.1791211207" id="entry_1791211207" class="form-control required" title="Child&#39;s grade is required">
+                    <select name="grade" id="grade" class="childField form-control required" title="Child&#39;s grade is required">
                         <option value=""></option>
                         <option value="4">4</option>
                         <option value="5">5</option>
@@ -149,11 +232,11 @@
                     </select>
                 </div>
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_724904151">
+                    <label class="q-item-label" for="shirtSize">
                         * T-Shirt Size
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <select class="required form-control" name="entry.724904151" id="entry_724904151" title="T-Shirt Size is required">
+                    <select class="childField required form-control" name="shirtSize" id="shirtSize" title="T-Shirt Size is required">
                         <option value=""></option>
                         <option value="Youth S">Youth S</option>
                         <option value="Youth M">Youth M</option>
@@ -169,19 +252,19 @@
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_358846444">
+                    <label class="q-item-label" for="position">
                         Football Postion
                     </label>
                     <small class="text-muted">(Example: QB, WR, DL)</small>
-                    <input class="form-control" type="text" name="entry.358846444" value="" id="entry_358846444" dir="auto" title="Football Postion Example: QB, WR, DL">
+                    <input class="childField form-control" type="text" name="position" value="" id="position" dir="auto" title="Football Postion Example: QB, WR, DL">
                 </div>
                 <div class="col-xs-6 form-group">
 
-                    <label class="q-item-label" for="entry_63752483">
+                    <label class="q-item-label" for="yearsExperience">
                         Years experience playing football
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <select class="form-control" name="entry.63752483" id="entry_63752483" title="Years experience playing football">
+                    <select class="childField form-control" name="yearsExperience" id="yearsExperience" title="Years experience playing football">
                         <option value=""></option>
                         <option value="0">0</option>
                         <option value="1">1</option>
@@ -200,31 +283,31 @@
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_1906782859">
+                    <label class="q-item-label" for="parentFName">
                         * Parent/Guardian First Name
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.1906782859" value="" onchange="this.value=toProperCase(this.value)" class="required form-control"
-                    id="entry_1906782859" dir="auto" title="Parent/Guardian First Name is required">
+                    <input type="text" name="parentFName" value="" onchange="this.value=toProperCase(this.value)" class="required form-control"
+                    id="parentFName" dir="auto" title="Parent/Guardian First Name is required">
                 </div>
                 <div class="col-xs-6 form-group">
                     <div class="form-entry">
-                        <label class="q-item-label" for="entry_474647137">
+                        <label class="q-item-label" for="parentLName">
                             * Parent/Guardian Last Name
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="entry.474647137" value="" class="required form-control" onchange="this.value=toProperCase(this.value)"
-                        id="entry_474647137" dir="auto" title="Parent/Guardian Last Name is required">
+                        <input type="text" name="parentLName" value="" class="required form-control" onchange="this.value=toProperCase(this.value)"
+                        id="parentLName" dir="auto" title="Parent/Guardian Last Name is required">
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_903779928">
+                    <label class="q-item-label" for="childLivesWith">
                         * Child Lives with
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <select class="required form-control" name="entry.903779928" id="entry_903779928" title="Child Lives with is required">
+                    <select class="required form-control" name="childLivesWith" id="childLivesWith" title="Child Lives with is required">
                         <option value=""></option>
                         <option value="Mother">Mother</option>
                         <option value="Father">Father</option>
@@ -234,41 +317,41 @@
                 </div>
                 <div class="col-xs-6 form-group">
                     <div class="form-entry">
-                        <label class="q-item-label" for="entry_1654300607">
+                        <label class="q-item-label" for="medical">
                             Child Medical Conditions/Allergies
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="entry.1654300607" value="" class="form-control" id="entry_1654300607" dir="auto" title="Medical Conditions/Allergies">
+                        <input type="text" name="medical" value="" class="form-control" id="medical" dir="auto" title="Medical Conditions/Allergies">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_1402976333">
+                    <label class="q-item-label" for="address">
                         * Address
                     </label>
-                    <input type="text" name="entry.1402976333" value="" class="required form-control" id="entry_1402976333" dir="auto" title="Address is required">
+                    <input type="text" name="address" value="" class="required form-control" id="address" dir="auto" title="Address is required">
                 </div>
                 <div class="col-xs-6 form-group">
                     <div class="form-entry">
-                        <label class="q-item-label" for="entry_1315311435">
+                        <label class="q-item-label" for="city">
                             * City
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="entry.1315311435" value="" class="required form-control" id="entry_1315311435" dir="auto" title="City is required">
+                        <input type="text" name="city" value="" class="required form-control" id="city" dir="auto" title="City is required">
                     </div>
                 </div>
             </div>
 
             <div class="row">
                 <div class="col-xs-6 form-group">
-                    <label class="q-item-label" for="entry_215338488">
+                    <label class="q-item-label" for="state">
                         * State
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
                     <input type="text" style="display:none" name="entry.215338488" value="" dir="auto" title="State  " title="">
-                    <select name="entry.215338488" id="entry_215338488" class="required form-control">
+                    <select name="state" id="state" class="required form-control">
                         <option value="AL">Alabama</option>
                         <option value="AK">Alaska</option>
                         <option value="AZ">Arizona</option>
@@ -324,11 +407,11 @@
                 </div>
                 <div class="col-xs-6 form-group">
 
-                    <label class="q-item-label" for="entry_1317122726">
+                    <label class="q-item-label" for="zip">
                         * Zip Code
                     </label>
-                    <input type="text" size="6" maxlength="5" minlength="5" name="entry.1317122726" value="" class="form-control required digits"
-                    id="entry_1317122726" dir="auto" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
+                    <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="form-control required digits"
+                    id="zip" dir="auto" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
 
                 </div>
             </div>
@@ -444,18 +527,46 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <div class="item navigate">
-                        <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
+                        <!--<input style="display:none" type="submit" name="submit" value="Submit" id="submit">-->
                         <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default">
                     </div>
                 </div>
             </div>
 
-            <div class="hidden">
-                <input name="entry.2062229120" id="entry_2062229120" value="" />
-                <input name="entry.1526387338" id="entry_1526387338" value="" />
-                <input name="entry.512266806" id="entry_512266806" value="" />
-                <input name="entry.1254374332" id="entry_1254374332" value="" />
-                <input name="entry.196476760" id="entry_196476760" value="" />
+        </form>
+        
+        <form id="entryForm" action="https://docs.google.com/forms/d/1vCvFVFu6aAGz3qw1o_9ACRbhmw8MBHqOGYIyYQpySkk/formResponse" method="post"
+        target="hidden_iframe" onsubmit="submitted=true;">
+            <div id="submitFormFields" class="hidden">
+                <input type="text" name="entry_468125125" id="entry_468125125" value="" /> Child First Name:
+                <input type="text" name="entry_475256130" id="entry_475256130" value="" /> Child Last Name:
+                <input type="text" name="entry_1791211207" id="entry_1791211207" value="" /> Grade:
+                <input type="text" name="entry_358846444" id="entry_358846444" value="" /> Position:
+                <input type="text" name="entry_724904151" id="entry_724904151" value="" /> Shirt Size:
+                <input type="text" name="entry_63752483" id="entry_63752483" value="" /> Years Experience:
+                <input type="text" name="entry_1654300607" id="entry_1654300607" value="" /> Medical:
+                <input type="text" name="entry_1938819117" id="entry_1938819117" value="" /> Location:
+                <input type="text" name="entry_1906782859" id="entry_1906782859" value="" /> Parent First Name:
+                <input type="text" name="entry_474647137" id="entry_474647137" value="" /> Parent Last Name:
+                <input type="text" name="entry_903779928" id="entry_903779928" value="" /> Child Lives With:
+                <input type="text" name="entry_1402976333" id="entry_1402976333" value="" /> Address 
+                <input type="text" name="entry_1315311435" id="entry_1315311435" value="" /> City:
+                <input type="text" name="entry_215338488" id="entry_215338488" value="" /> State:
+                <input type="text" name="entry_1317122726" id="entry_1317122726" value="" /> Zip:
+                <input type="text" name="entry_1526387338" id="entry_1526387338" value="" /> Home Phone:
+                <input type="text" name="entry_512266806" id="entry_512266806" value="" /> Cell Phone:
+                <input type="text" name="entry_2062229120" id="entry_2062229120" value="" /> Email:
+                <input type="text" name="entry_2048136904" id="entry_2048136904" value="" /> Emergencey Contact
+                <input type="text" name="entry_1254374332" id="entry_1254374332" value="" /> Emergency Phone
+                <input type="text" name="entry_580467603" id="entry_580467603" value="" /> Emergency Person Relationship to Child
+                <input type="text" name="entry_1242629666" id="entry_1242629666" value="" /> Comments
+                <input type="text" name="entry_196476760" id="entry_196476760" value="" /> Volunteer:
+                <input type="text" name="entry_836064026" id="entry_836064026" value="" /> Paid
+                <input type="text" name="entry_1420925338" id="entry_1420925338" value="" /> Liability
+                <input type="text" name="entry_1481928124" id="entry_1481928124" /> Session
+
+
+                <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
             </div>
         </form>
     </div>

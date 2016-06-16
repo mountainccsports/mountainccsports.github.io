@@ -13,9 +13,10 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
 
-    <script type="text/javascript">       
+    <script type="text/javascript">     
+        history.forward(0);	  
         $(document).ready(function () {
-            $("#entryForm").validate();
+            //$("#entryForm").validate();
 
 			 /* Phone number mask START*/
             $(".phonemask").mask("999-999-9999");
@@ -66,7 +67,9 @@
             try {
 
                 window.scrollTo(0, 0);
-                if ($('#entryForm').valid()) {
+                //if ($('#entryForm').valid()) {
+                    
+                  if (1==1) {
                     $('#entry_2062229120').val($('#email_1').val());
                     $('#entry_1526387338').val($('#homephone').val());
                     $('#entry_512266806').val($('#cellphone').val());

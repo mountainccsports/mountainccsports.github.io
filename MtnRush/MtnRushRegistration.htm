@@ -137,7 +137,7 @@
                     $('#confirmationForm').show();  
                                   
                     //erase some of the fields
-                    //$('.helperField').remove();
+                    //$('.').remove();
                 }
                 else {
                     alert('Please fill out all required fields.\n\nThank You.');
@@ -201,7 +201,7 @@
                         * Child&#39;s First Name
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="childField helperField form-control required"
+                    <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="childField form-control required"
                     id="fname" title="Child&#39;s first name is required">
                 </div>
                 <div class="col-xs-6 form-group">
@@ -210,7 +210,7 @@
                             * Child&#39;s Last Name
                         </label>
                         <div class="secondary-text" dir="ltr"></div>
-                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="childField helperField form-control required"
+                        <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="childField form-control required"
                         id="lname" dir="auto" title="Child&#39;s Last Name is required">
                     </div>
                 </div>
@@ -448,9 +448,9 @@
                             We will communicate important information using email. If you do not use email, check "No"
                          </small>
                     <br/>
-                    <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
+                    <input class="required" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."
                     />Yes
-                    <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."
+                    <input class="" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."
                     />No
                     <label class="error" for="email"></label>
                 </div>
@@ -461,7 +461,7 @@
                     <label for="email_1">
                         * Email Address
                     </label>
-                    <input class="helperField required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                    <input class="required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
                 </div>
 
                 <div class="col-xs-6 form-group">
@@ -471,7 +471,7 @@
                     <small class="text-muted">
                             Please enter your address again to confirm it is correct.
                          </small>
-                    <input class="helperField required form-control" type="email" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
+                    <input class="required form-control" type="email" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
                     title="Email must match email address to the left.">
                 </div>
             </div>
@@ -482,13 +482,13 @@
                         Emergency Contact Person
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.2048136904" value="" class="helperField form-control" id="entry_2048136904" dir="auto" title="Emergency Contact Person">
+                    <input type="text" name="entry.2048136904" value="" class="form-control" id="entry_2048136904" dir="auto" title="Emergency Contact Person">
                 </div>
                 <div class="col-xs-6 form-group">
                     <label class="" for="emergencyPhone">
                         Emergency Contact Phone
                     </label>
-                    <input class="helperField form-control phonemask" id="contactphone" maxlength="12" minlength="12" type="tel" />
+                    <input class="form-control phonemask" id="contactphone" maxlength="12" minlength="12" type="tel" />
                 </div>
             </div>
 
@@ -499,7 +499,7 @@
                         Emergency Contact&#39;s Relationship to Child
                     </label>
                     <div class="secondary-text" dir="ltr"></div>
-                    <input type="text" name="entry.580467603" value="" class="helperField form-control" id="entry_580467603" dir="auto" title="Emergency Contact&#39;s Relationship to Child  ">
+                    <input type="text" name="entry.580467603" value="" class="form-control" id="entry_580467603" dir="auto" title="Emergency Contact&#39;s Relationship to Child  ">
                 </div>
             </div>
             <div class="row">

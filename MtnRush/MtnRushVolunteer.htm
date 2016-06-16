@@ -1,15 +1,17 @@
-﻿
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
+
 <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; chrome=1;">
-    <meta name="fragment" content="!">
-    <base target="_blank">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Mountain Hoops Volunteer Entry Form</title>
-
-    <link href="style.css" rel="stylesheet" type="text/css" />
+    <link href="style.2016.css" rel="stylesheet" type="text/css" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery.validate.min.js"></script>
 
@@ -85,6 +87,15 @@
     <script type="text/javascript"></script>
 </head>
 <body>
+   <div id="header" style="background-color:#000000;">
+   <img width="118" height="53" style="margin: 10px;" alt="" src="img/MCC-Logo-1C.png">
+   <img height="96" style="margin:0px;position:absolute;top:-12px;right:15px" alt="" src="img/RushLogo.png">
+    </div>
+    <div id="header" style="background-color:#9BBB3D;color:#000000;text-align:center;font-weight:bold;">
+        Mountain Rush Registration
+    </div>
+
+    <div class="container">
     <script type="text/javascript">var submitted = false;</script>
     <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;"></iframe>
     <div id="confirmationForm" class="hidden">
@@ -106,33 +117,28 @@
     </div>
 
     <form id="entryForm" action="?">
-        <!--<fieldset>-->
- 			<table style="width:560px;border:none;">
-                <tr>
-                    <td>
-                        <div class="form-entry">
+        <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
+                <div class="row">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="fname">
                                 * First Name
                             </label>
                             <div class="secondary-text" dir="ltr"></div>
                             <input type="text" name="fname" value="" onchange="this.value=toProperCase(this.value)" class="required childField entryField" id="fname" title="First name is required">
                             <input style="display:none;" type="button" value="test" onclick="$('[name=\'fname_post\']').val($('#fname').val());"/>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="form-entry">
+                </div>
+                
+                <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="lname">
                                 * Last Name
                             </label>
                             <div class="secondary-text" dir="ltr"></div>
                             <input type="text" name="lname" value="" onchange="this.value=toProperCase(this.value)" class="required childField entryField" id="lname" dir="ltr" title="Last Name is required">
                         </div>
-                    </td>
-                </tr>
+                </div>
 
-                <tr>
-                    <td colspan="2">
-                        <div class="form-entry">
+                <div class="row">
+                    <div class="col-xs-12 form-group">
                             <label class="q-item-label" for="shirtSize">
                                 * T-Shirt Size
                             </label>
@@ -147,32 +153,26 @@
 								<option value="AXL">Adult XXXL</option>
                             </select>
                         </div>
-                    </td>
-                </tr>    
-
-                <tr>
-                    <td>
-                        <div class="form-entry">
+                    </div>
+                <div class="row">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="address">
                                 * Address
                             </label>
                             <input type="text" name="address" value="" class="required entryField" id="address" dir="ltr" title="Address is required">
                         </div>
-                    </td>
-                    <td>
-                        <div class="form-entry">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="city">
                                 * City
                             </label>
                             <div class="secondary-text" dir="ltr"></div>
                             <input type="text" name="city" value="" class="required entryField" id="city" dir="ltr" title="City is required">
                         </div>
-                    </td>
-                </tr>
+                 </div>
+                
 
-                <tr>
-                    <td>
-                        <div class="form-entry">
+               <div class="row">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="state">
                                 * State
                             </label>
@@ -232,19 +232,16 @@
                                 <option value="WY">Wyoming</option>
                             </select>
                         </div>
-                    </td>
-                    <td>
-                        <div class="form-entry">
+
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="zip">
                                 * Zip Code
                             </label>
                             <input type="text" size="6" maxlength="5" minlength="5" name="zip" value="" class="required digits" id="zip" dir="ltr" title="Please enter 5 digits for zip code. (Example 21040)" pattern=".*^\d{5}$.*">
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="form-entry">
+                    </div>
+                <div class="row">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="textCheck">
                                 * Do you have a mobile phone that can receive text messages?
                             </label>
@@ -253,18 +250,20 @@
                             <input class="helperField" type="radio" name="phone1_check" value="No" onclick="togglephone(this)" title="Valid mobile phone is required." />No
                             <label class="error" for="phone1_check"></label>
                         </div>
-
-                        <div id="phone1_div" class="form-entry" style="display:none">
-                            <label class="q-item-label" for="cellphone1">
-                                * Mobile/Texting Phone
-                            </label>
-                            <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
-                            <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))" maxlength=3>-
-                            <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
-                            <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone" maxlength="10" minlength="10" class="required digits entryField" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone." />
+                        <div class="col-xs-6 form-group">
+                            <div id="phone1_div" class="form-entry" style="display:none">
+                                <label class="q-item-label" for="cellphone1">
+                                    * Mobile/Texting Phone
+                                </label>
+                                <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
+                                <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))" maxlength=3>-
+                                <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
+                                <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone" maxlength="10" minlength="10" class="required digits entryField" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone." />
+                            </div>
                         </div>
-
-                        <div class="form-entry">
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="textCheck">
                                 * Do you have a home phone or other phone number that we can reach you if necessary?
                             </label>
@@ -272,7 +271,7 @@
                             <input class="helperField" type="radio" name="phone2_check" value="No" onclick="togglephone(this)" title="Valid mobile phone is required." />No
                             <label class="error" for="phone2_check"></label>
                         </div>
-
+                    <div class="col-xs-6 form-group">
                             <div id="phone2_div" class="form-entry" style="display:none">
                                 <label class="q-item-label" for="homephone1">
                                     * Home/Other Phone
@@ -282,14 +281,11 @@
                                 <input class="helperField" type="text" id="homephone3" size=4 maxlength=4 onblur="setphone('homephone')">
                                 <input name="homephone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="homephone" maxlength="10" minlength="10" class="required digits helperField entryField" readonly tabindex="-1" title="Home phone is required.  If cell only, use cell phone." />
                             </div>
-                        
+                    </div>
+                </div>
 
-                    </td>
-                </tr>
-
-                <tr>
-                    <td colspan="2">
-                        <div class="form-entry">
+               <div class="row">
+                    <div class="col-xs-12 form-group">
                             <label class="q-item-label" for="emailCheck">
                                 * Do you have a valid Email Address?
                             </label>
@@ -297,31 +293,25 @@
                             <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required." />Yes
                             <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required." />No
                             <label class="error" for="email"></label>
-                        </div>
-                    </td>
-                </tr>
-                <tr id="email_div" style="display:none">
-                    <td>
-                        <div class="form-entry">
+                    </div>
+               </div>
+               <div class="row" id="email_div" style="display:none">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="email_1">
                                 * Email Address
                             </label>
                             <input class="helperField required entryField" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
                         </div>
 
-                    </td>
-                    <td>
-                        <div class="form-entry">
+                    <div class="col-xs-6 form-group">
                             <label class="q-item-label" for="email_2">
                                 * Email Address Check
                             </label>
                             <input class="helperField required entryField" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr" title="Email must match email address to the left.">
                         </div>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div class="form-entry">
+                    </div>
+                <div class="row">
+                <div class="col-xs-12 form-group">
                             <label class="q-item-label" for="comments">
                                 Comments/Requests
                             </label>
@@ -329,21 +319,14 @@
                             <textarea class="entryField" name="comments" rows="4" cols="60" class="q-long" id="comments" dir="ltr" title="Comments/Requests  "></textarea>
 
                         </div>
-                    </td>
-
-                </tr>
-                <tr>
-					<td>
+                    </div>
+                <div class="row">
+                    <div class="col-xs-12 form-group">
 				        <div class="item navigate">
 							<input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()">
 						</div>
-					</td>
-                </tr>
-
-            </table>
-
-
-
+					</div>
+                </div>
 
         <!--</fieldset>-->
         </form>
@@ -383,6 +366,10 @@
             <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
         </div>
     </form>
- 
+    </div>
+    <script src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="jquery.validate.min.js"></script>
+    <script type="text/javascript" src="jquery.maskedinput.min.js"></script>
 </body>
+
 </html>

@@ -550,8 +550,8 @@
                             We will communicate important information using email. If you do not use email, check "No"
                          </small>
                         <br/>
-                        <input class="required helperField" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."/>Yes
-                        <input class="helperField" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."/>No
+                        <input class="required" type="radio" name="email" value="Yes" onclick="checkemail(this)" title="Valid email is required."/>Yes
+                        <input class="" type="radio" name="email" value="No" onclick="checkemail(this)" title="Valid email is required."/>No
                         <label class="error" for="email"></label>
                     </div>
 
@@ -562,7 +562,7 @@
                         <label for="email_1">
                             * Email Address
                         </label>
-                        <input class="helperField required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                        <input class="required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
                     </div>
 
                     <div class="col-xs-6 form-group">
@@ -572,7 +572,7 @@
                         <small class="text-muted">
                             Please enter your address again to confirm it is correct.
                          </small>
-                        <input class="helperField required form-control" type="email" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
+                        <input class="required form-control" type="email" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
                         title="Email must match email address to the left.">
                     </div>
 
@@ -593,7 +593,7 @@
                         <label class="" for="emergencyPhone">
                             Emergency Contact Phone
                         </label>
-                        <input class="helperField form-control phonemask" id="emergencyPhone" maxlength="12" minlength="12" type="tel"/>
+                        <input class="form-control phonemask" id="emergencyPhone" maxlength="12" minlength="12" type="tel"/>
                     </div>
 
                 </div>

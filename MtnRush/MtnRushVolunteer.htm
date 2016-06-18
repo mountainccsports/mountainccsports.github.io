@@ -12,14 +12,29 @@
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="jquery.min.js"></script>
-    <script type="text/javascript" src="jquery.min.js"></script>
     <script type="text/javascript" src="jquery.validate.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
             $("#entryForm").validate();
+        
+ /* Phone number mask START*/
+            $(".phonemask").mask("999-999-9999");
+            
+            $(".phonemask").on("blur", function() {
+                var last = $(this).val().substr( $(this).val().indexOf("-") + 1 );
+                
+                if( last.length == 3 ) {
+                    var move = $(this).val().substr( $(this).val().indexOf("-") - 1, 1 );
+                    var lastfour = move + last;
+                    
+                    var first = $(this).val().substr( 0, 9 );
+                    
+                    $(this).val( first + '-' + lastfour );
+                }
+            });
+            /* Phone number mask END*/
         });
-
         function setphone(fieldset) {
             var setField = false;
             for (i = 1; i < 4; i++) {
@@ -263,15 +278,10 @@
                 </div>
                 <div class="col-xs-6 form-group">
                     <div id="phone1_div" class="form-entry" style="display:none">
-                        <label for="cellphone1">
+                        <label for="cellphone">
                             * Mobile/Texting Phone
                         </label>
-                        <input class="helperField" type="text" id="cellphone1" size=3 onkeyup="autotab(this, $('#cellphone2'))" maxlength=3 onblur="setphone('cellphone')">-
-                        <input class="helperField" onblur="setphone('cellphone')" type="text" id="cellphone2" size=3 onkeyup="    autotab(this, $('#cellphone3'))"
-                        maxlength=3>-
-                        <input class="helperField" type="text" id="cellphone3" size=4 maxlength=4 onblur="setphone('cellphone')">
-                        <input name="cellphone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="cellphone"
-                        maxlength="10" minlength="10" class="required digits form-control" readonly tabindex="-1" title="Cell Phone is required.  If none, use home phone."
+                        <input name="cellphone" id="cellphone" maxlength="12" minlength="12" class="form-control required phonemask" type="tel" title="Cell Phone is required. If none, use home phone."
                         />
                     </div>
                 </div>
@@ -289,16 +299,11 @@
                 </div>
                 <div class="col-xs-6 form-group">
                     <div id="phone2_div" class="form-entry" style="display:none">
-                        <label for="homephone1">
+                        <label for="homephone">
                             * Home/Other Phone
                         </label>
-                        <input class="helperField" type="text" id="homephone1" size=3 onkeyup="autotab(this, $('#homephone2'))" maxlength=3 onblur="setphone('homephone')">-
-                        <input class="helperField" onblur="setphone('homephone')" type="text" id="homephone2" size="3" onkeyup=" autotab(this, $('#homephone3'))"
-                        maxlength=3>-
-                        <input class="helperField" type="text" id="homephone3" size=4 maxlength=4 onblur="setphone('homephone')">
-                        <input name="homephone" style="border:none;padding-left:10px;color:transparent;background-color:transparent;width:0px;" id="homephone"
-                        maxlength="10" minlength="10" class="required digits helperField form-control" readonly tabindex="-1"
-                        title="Home phone is required.  If cell only, use cell phone." />
+                        <input name="homephone" id="homephone" maxlength="12" minlength="12" class="phonemask form-control required" type="tel" title="Home phone is required. If cell only, use cell phone."
+                        />
                     </div>
                 </div>
             </div>
@@ -321,14 +326,14 @@
                     <label for="email_1">
                         * Email Address
                     </label>
-                    <input class="helperField required form-control" type="text" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
+                    <input class="helperField required form-control" type="email" value="" name="email_1" id="email_1" dir="ltr" title="Valid email is required.">
                 </div>
 
                 <div class="col-xs-6 form-group">
                     <label for="email_2">
                         * Email Address Check
                     </label>
-                    <input class="helperField required form-control" type="text" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
+                    <input class="helperField required form-control" type="email" onblur="checkemail(this)" name="email_2" value="" equalto="#email_1" id="email_2" dir="ltr"
                     title="Email must match email address to the left.">
                 </div>
             </div>
@@ -345,7 +350,7 @@
             <div class="row">
                 <div class="col-xs-12 form-group">
                     <div class="item navigate">
-                        <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default"> 
+                        <input type="button" name="submit" value="Submit" id="btnSubmitJS" onclick="postToGoogle()" class="btn btn-default">
                     </div>
                 </div>
             </div>

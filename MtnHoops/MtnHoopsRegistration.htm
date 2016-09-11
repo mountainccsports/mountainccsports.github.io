@@ -245,7 +245,10 @@
             <br />
             <br />Here are a few reminders and important things to know about the camp:
             <ul>
-                <li><strong>Camp Dates:</strong> April 2, 9, 16 and 23</li>
+                <!------------------------------------------------------------------------------------------------->
+                <!--Make updates here for any information that needs to be changed for specific camp information -->
+                <!------------------------------------------------------------------------------------------------->
+                <li><strong>Camp Dates:</strong> October 29 – November 19</li>
                 <li><strong>Location and Time</strong>: <span id="registeredLocation"></span>&nbsp;<span id="registeredTime"></span></li>
                 <li><strong>Check-in</strong>: Please arrive 10 minutes early to check in</li>
                 <li><strong>You have agreed to the Liability, Medical, Photo Release Form.  </strong><a target="_blank" href="LiabilityMedicalPhotoRelease.pdf">Click here to print the form.</a>.</li>
@@ -264,8 +267,8 @@
             sign up <a target="_parent" href="http://www.mountainccsports.org/MtnHoops/MtnHoopsVolunteer.htm">HERE</a>.
             <br />
             <br /> It’s going to be a great camp and we’re really looking forward to it. If you have any questions, please contact
-            the Camp Director,  Melissa Flanagan, at <a href="mailto:MelissaFlanagan@MountainCC.org?subject=Mountain%20Hoops%20Camp
-       " target="_top">MelissaFlanagan@MountainCC.org</a>.
+            the Camp Director,  Luke Erickson, at <a href="mailto:LukeErickson@MountainCC.org?subject=Mountain%20Hoops%20Camp
+       " target="_top">LukeErickson@MountainCC.org</a>.
             <br />
             <br />See you soon!
             <br /> Melissa Flanagan
@@ -275,7 +278,7 @@
         </div>
 
         <form id="entryForm" action="?" role="form">
-                <div style="display:block;padding-bottom:5px" class="alert-message">
+                <div style="display:none;padding-bottom:5px" class="alert-message">
                     Unfortunately the Edgewood Location is full. Aberdeen still does have space.
                 </div>
                 <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
@@ -327,6 +330,11 @@
                 </div>
                 <div class="row">
                     <div id="locationDiv" class="col-xs-12 form-group" style="display:none">
+                        <!----------------------------------------------------------------------->
+                        <!--Comment out values here if need to remove a site because it is full-->
+                        <!-------------------------- Example ------------------------------------>
+                        <!--<option value="Edgewood">Edgewood Boys & Girls Club</option>-->
+                        <!----------------------------------------------------------------------->
                         <label for="location">
                             * Location
                         </label>
@@ -337,16 +345,17 @@
                             <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
                         </select>
                         <div class="secondary-text locationNotClinic1" dir="ltr">Select Aberdeen or Edgewood location</div>
+                        
                         <select name="locationNotClinic1" id="locationNotClinic1" title="Location is required" class="form-control required locationNotClinic1 childField">
                             <option value=""></option>
                             <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
-                            <!--<option value="Edgewood">Edgewood Boys & Girls Club</option>-->
+                            <option value="Edgewood">Edgewood Boys & Girls Club</option>
                         </select>
                         <div class="secondary-text locationNotClinic2" dir="ltr">Select Aberdeen or Edgewood location</div>
                         <select name="locationNotClinic2" id="locationNotClinic2" title="Location is required" class="form-control required locationNotClinic2 childField">
                             <option value=""></option>
                             <option value="Aberdeen">Aberdeen Boys & Girls Club</option>
-                            <!--<option value="Edgewood">Edgewood Boys & Girls Club</option>-->
+                            <option value="Edgewood">Edgewood Boys & Girls Club</option>
                         </select>
                     </div>
                 </div>

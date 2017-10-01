@@ -87,6 +87,11 @@
             }
         }
         function updateSchedule(obj) {
+            //wipe out session 3 in case switch from Edgewood To Aberdeen
+            alert('here')
+            $('#day1_3').prop( "checked", false );
+            $('#day2_3').prop( "checked", false );
+            $('#day3_3').prop( "checked", false );
             if (obj.value != '') {
                 $('.headerRow').hide();
                 $('.data').hide();

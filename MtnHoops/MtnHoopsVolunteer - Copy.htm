@@ -88,10 +88,10 @@
         }
         function updateSchedule(obj) {
             if (obj.value != '') {
-                $('.headerRow').hide();
-                $('.data').hide();
-                $('.schedule'+obj.value).show();
                 $('.schedule').show();
+                $('.headerRow').hide();
+                $('#header'+obj.value).show();
+              
             }
         }
         function postToGoogle() {
@@ -153,7 +153,7 @@
         Thank you <span id="registeredName"></span> for volunteering for the Mountain Hoops Basketball Camp.
         <br /><br />Here are a few reminders and important things to know about the camp:
         <ul>
-            <li><strong>Camp Dates:</strong>November 4, November 11 and November 18</li>
+            <li><strong>Camp Dates:</strong>March 18 - April 8</li>
             <li><strong>Location</strong>: <span id="registeredLocation"></span></li>
             <li><strong>Check-in</strong>: Please arrive 15 minutes early to check in</li>
             <li><strong>Background Check Form</strong>: If you have not already filled it out, the form can be accessed and printed <a target="_blank" href="BackgroundCheck.pdf">HERE</a>.</li>
@@ -169,12 +169,8 @@
     <form id="entryForm" action="?" role="form">
              <div class="row">   
                     <div class="col-xs-12">
-                        <br/>
-                        <div class="alert alert-info">
-                            Thank you for volunteering for the Mountain Hoops camp! Your investment in these children matters. 
-                            Please consider the commitment that you are able to make. 
-                            The camp runs 3 Saturdays, with 3 sessions each day at Edgewood and 2 sessions each day at Aberdeen. 
-                            It is most helpful if you can attend at least 2 out of the 3 Saturdays.
+                        <div style="color: #0033CC;padding-bottom:5px">
+                            Thank you for volunteering for the Mountain Hoops camp! Your investment in these children matters. Please consider the commitment that you are able to make. The camp runs 4 Saturdays, with 2 sessions each day at each location. It is most helpful if you can attend at least 3 out of the 4 Saturdays, for one or both of the sessions on those days.
                         </div>
                         <div style="padding-bottom:5px" class="secondary-text">(* indicates required field)</div>
                     </div>
@@ -377,9 +373,9 @@
                             </label>
                             <select onchange="updateSchedule(this)" name="location" id="location" title="Location is required" class="entryField form-control required locationNotClinic childField">
                                 <option value=""></option>
-                                <!--<option value="EPICENTER">EPICENTER in Edgewood (Clinic 1st/2nd Grade)</option>-->
+                                <option value="EPICENTER">EPICENTER in Edgewood (Clinic 1st/2nd Grade)</option>
                                 <option value="Aberdeen">Aberdeen Boys & Girls Club (1st to 8th Grade)</option>
-                                <option value="Edgewood">Edgewood Boys & Girls Club (1st to 8th Grade)</option>
+                                <option value="Edgewood">Edgewood Boys & Girls Club (3rd to 8th Grade)</option>
                             </select>
 
                         </div>
@@ -390,37 +386,40 @@
                         <label class="schedule" style="display:none">
                             * Please check the sessions you are available to serve.
                         </label>
-                        <table style="display:none;width:600px;" id="schedule" class="schedule">
-                            <!--<tr class="headerRow" id="headerEPICENTER"><th class="Hoopslabel">The EPICENTER</th><th>9:00am - 10:45am<div class="secondary-text">(1st grade)</div></th><th>11:00am - 12:45pm<div class="secondary-text">(2nd grade)</div></th></div>-->
-                            
-                            <tr class="headerRow scheduleEdgewood" id="headerEdgewood"><th class="Hoopslabel">Edgewood B&G Club</th>
-                            <th>9:00am - 11:00am<div class="secondary-text">(1st - 2nd)</div></th>
-                            <th>11:00am - 1:00pm<div class="secondary-text">(3rd - 4th)</div></th>
-                            <th>1:00pm - 3:00pm<div class="secondary-text">(5th - 8th)</div></th></div>
-                            
-                            <tr class="headerRow scheduleAberdeen" id="headerAberdeen"><th class="Hoopslabel">Aberdeen B&G Club</th>
-                            <th>9:00am - 11:00am<div class="secondary-text">(1st - 4th)</div></th>
-                            <th>11:00am - 1:00pm<div class="secondary-text">(5th - 8th)</div></th></div>
-
+                        <table style="display:none;width:420px;" id="schedule" class="schedule">
+                            <tr class="headerRow" id="headerEPICENTER"><th class="Hoopslabel">The EPICENTER</th><th>9:00am - 10:45am<div class="secondary-text">(1st grade)</div></th><th>11:00am - 12:45pm<div class="secondary-text">(2nd grade)</div></th></div>
+                            <tr class="headerRow" id="headerEdgewood"><th class="Hoopslabel">Edgewood B&G Club</th><th>9:00am - 11:00am<div class="secondary-text">(3rd - 4th)</div></th><th>11:00am - 1:00pm<div class="secondary-text">(5th - 8th)</div></th></div>
+                            <tr class="headerRow" id="headerAberdeen"><th class="Hoopslabel">Aberdeen B&G Club</th><th>9:00am - 11:00am<div class="secondary-text">(1st - 4th)</div></th><th>11:00am - 1:00pm<div class="secondary-text">(5th - 8th)</div></th></div>
                             <tr>
-                                <td class="Hoopslabel scheduleEdgewood scheduleAberdeen">Nov 4</div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day1_1" value="x" /></div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day1_2" value="x" /></div>
-                                <td class="data scheduleEdgewood "><input class="entryCheckbox" type="checkbox" id="day1_3" value="x" /></div>
+                                <td class="Hoopslabel">March 18</div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day1_1" value="x" /></div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day1_2" value="x" /></div>
                             </div>
                             <tr>
-                                <td class="Hoopslabel scheduleEdgewood scheduleAberdeen">Nov 11</div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day2_1" value="x" /></div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day2_2" value="x" /></div>
-                                <td class="data scheduleEdgewood "><input class="entryCheckbox" type="checkbox" id="day2_3" value="x" /></div>
+                                <td class="Hoopslabel">March 25</div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day2_1" value="x" /></div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day2_2" value="x" /></div>
+                            </div>
+                            <tr style="display:none">
+                                <td class="label">Nov 14</div>
+                                <td colspan="2" style="text-align:center"><strong>EASTER WEEKEND</strong></div>
                             </div>
                             <tr>
-                                <td class="Hoopslabel scheduleEdgewood scheduleAberdeen">Nov 18</div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day3_1" value="x" /></div>
-                                <td class="data scheduleEdgewood scheduleAberdeen"><input class="entryCheckbox" type="checkbox" id="day3_2" value="x" /></div>
-                                <td class="data scheduleEdgewood "><input class="entryCheckbox" type="checkbox" id="day3_3" value="x" /></div>
+                                <td class="Hoopslabel">April 1</div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day3_1" value="x" /></div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day3_2" value="x" /></div>
                             </div>
-                        </table><br/>
+                            <tr>
+                                <td class="Hoopslabel">April 8</div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day4_1" value="x" /></div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day4_2" value="x" /></div>
+                            </div>
+                            <tr style="display:none">
+                                <td class="label">Apr 25</div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day5_1" value="x" /></div>
+                                <td class="data"><input class="entryCheckbox" type="checkbox" id="day5_2" value="x" /></div>
+                            </div>
+                        </table>
                     </div>
                 </div>
                 <div class="row">
@@ -500,17 +499,7 @@
             <input type="text" name="entry.1058673247" id="gform_day4_2" value="" />
             Day 5 session 2
             <input type="text" name="entry.779212524" id="gform_day5_2" value="" />
-            
-            Day 1 session 3
-            <input type="text" name="entry.576657304" id="gform_day1_3" value="" />
-            Day 2 session 3
-            <input type="text" name="entry.879017123" id="gform_day2_3" value="" />
-            Day 3 session 3
-            <input type="text" name="entry.1934789683" id="gform_day3_3" value="" />
-            Day 4 session 3
-            <input type="text" name="entry.405826381" id="gform_day4_3" value="" />
-            Day 5 session 3
-            <input type="text" name="entry.1268701005" id="gform_day5_3" value="" />
+
 
             <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
         </div>

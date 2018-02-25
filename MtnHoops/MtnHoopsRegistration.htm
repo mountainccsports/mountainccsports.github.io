@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Mountain Hoops Camp Entry Form TEST</title>
+    <title>Mountain Hoops Camp Entry Form</title>
     <link href="style.2016.css" rel="stylesheet" type="text/css" />
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -62,6 +62,18 @@
                 $('#' + obj.name + '_div').hide();
                 $('#' + obj.name + '_1').val('sorry@noemail.com');
                 $('#' + obj.name + '_2').val('sorry@noemail.com');
+            }
+        }
+        function checkChurch(obj) {
+            if (obj.value == 'Yes') {
+                $('#' + obj.name + '_div').show();
+                $('#' + obj.name + '_1').val('');
+                //$('#' + obj.name + '_2').val('');
+            }
+            else {
+                $('#' + obj.name + '_div').hide();
+                $('#' + obj.name + '_1').val('sorry@noemail.com');
+                //$('#' + obj.name + '_2').val('sorry@noemail.com');
             }
         }
         function updateTimes() {
@@ -182,16 +194,12 @@
                     if ($('#volunteer:checkbox:checked').length > 0) {
                         $('#entry_196476760').val('Yes');
                     }
-					
+					*/
                     if ($('#liability:checkbox:checked').length > 0) {
                         $('#entry_1420925338').val('Y');
                     }
-                    */
-                    //Liability:
-                    $('#entry_1420925338').val($('#liability').val());
-                    //Payment
-                    //$('#entry_836064026').val($('#payment').val());
- 
+                    
+                    $('#entry_2055370185').val($('#church').val())
 					
                     $('#submit').click();
                     $('#entryForm').hide();
@@ -242,7 +250,7 @@
                 <!--Make updates here for any information that needs to be changed for specific camp information -->
                 <!----------------------------------------------------------------------------------------------- -->
                 <!-- <li><strong>Camp Dates:</strong>Saturdays: March 18, March 25, April 1, April 8</li> -->
-                <li><strong>Camp Dates:</strong>Saturdays: Nov 4, Nov 11 and Nov 18</li>
+                <li><strong>Camp Dates:</strong>Saturdays: April 7, April 14, April 21, April 28</li>
                 <li><strong>Location and Time</strong>: <span id="registeredLocation"></span>&nbsp;<span id="registeredTime"></span></li>
                 <li><strong>Check-in</strong>: Please arrive 10 minutes early to check in</li>
                 <li><strong>You have agreed to the Liability, Medical, Photo Release Form.  </strong><a target="_blank" href="LiabilityMedicalPhotoRelease.pdf">Click here to print the form.</a>.</li>
@@ -613,6 +621,26 @@
                         <input type="text" name="emergencyRelationship" value="" class="form-control" id="emergencyRelationship" dir="ltr" title="Emergency Contact&#39;s Relationship to Child">
                     </div>
                 </div>
+
+
+                <div class="row">
+                    <div class="col-xs-6 form-group">
+                        <label for="attendChurch">
+                            * Do you attend a church?
+                        </label>
+                        <br/>
+                        <input class="required" type="radio" name="attendChurch" value="Yes" onclick="checkChurch(this)" title="Do you attend church is required."/>Yes
+                        <input class="" type="radio" name="attendChurch" value="No" onclick="checkChurch(this)" title="Do you attend church is required."/>No
+                        <label class="error" for="attendChurch"></label>
+                    </div>
+                    <div class="col-xs-6 form-group" id="attendChurch_div" style="display:none">
+                        <label for="church">
+                            Church Name
+                        </label>
+                        <input type="text" name="church" value="" class="form-control required" id="church" dir="ltr" title="Church Name is required">
+                    </div>
+                </div>
+
                 <div class="row">
                     
                     <div class="col-xs-6 form-group">
@@ -750,6 +778,7 @@
                 <input type="text" name="entry_774317920" id="entry_774317920" value="" /> Day 5
                 <input type="text" name="entry_543684174" id="entry_543684174" value="" /> Total
                 <input type="text" name="entry_1555206858" id="entry_1555206858" value="" />Awards
+                <input type="text" name="entry_2055370185" id="entry_2055370185" value="" />Church
 
                 <input style="display:none" type="submit" name="submit" value="Submit" id="submit">
             </div>
